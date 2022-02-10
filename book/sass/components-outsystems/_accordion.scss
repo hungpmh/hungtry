@@ -1,0 +1,44 @@
+.accordion.custom {
+  & .section-expandable {
+    border-bottom: 0;
+
+    &.open .section-expandable-title .section-expandable-icon {
+      &:before {
+        transform: translate(-4.5px, 0) rotate(45deg);
+      }
+    }
+
+    &-title {
+      padding: 0;
+    }
+
+    &-content {
+      padding: 0;
+
+      &.is--expanded {
+        padding-top: 16px;
+      }
+
+      &.is--collapsed {
+        padding-top: 0;
+      }
+    }
+
+    &-icon {
+      &:after {
+        transform: translate(-4.5px, 0) rotate(-45deg);
+        border-radius: 20px;
+      }
+
+      &::before {
+        border-radius: 20px; 
+      }
+
+      &:after,
+      &::before {
+        width: 2px;
+        height: 8px;
+      }
+    }
+  }
+}

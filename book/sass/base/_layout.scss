@@ -1,0 +1,59 @@
+.header a,
+.header a:link,
+.header a:visited {
+  color: $color-white;
+}
+
+.header-top {
+  height: 50px;
+}
+
+
+.header-left, .header-right {
+  flex: unset;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.header-title {
+  text-align: left;
+  flex: 1;
+  padding: 0 10px;
+  font-weight: 500;
+}
+
+
+
+
+.button-group {
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.button-group-item {
+  height: 45px;
+  font-weight: 500;
+  @include fs-b;
+  transition: all 0.1s;
+}
+
+button.button-group-item.button-group-selected-item {
+  background-color: $color-primary;
+}
+
+
+
+.list.no-animation img {
+  animation: none;
+}
+
+
+
+.animated-label-input input[data-input]:focus {
+  border-bottom: 2px solid var(--color-primary);
+}

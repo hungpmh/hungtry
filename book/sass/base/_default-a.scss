@@ -1,0 +1,19 @@
+a, a:link, a:visited {
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-rem-14px;
+}
+
+.header-right a {
+  display: flex !important;
+  align-items: center;
+  height: 50px;
+}
+
+// Place by .header-right a
+.action-link {
+  display: flex !important;
+  align-items: center;
+  height: 50px;
+}
+

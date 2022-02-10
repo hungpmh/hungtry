@@ -1,0 +1,35 @@
+select 
+
+RA.RELEASEGROUPID,
+RA.RELEASETYPE,
+RA.FUNDCENTERID,
+RA.FUNDTYPE,
+RA.AMOUNTFROM,
+RA.AMOUNTTO,
+RA.FUNDGROUPID,
+RA.FUND,
+RA.CIGROUPID,
+
+AL.RELEASEAPPROVALID,
+AL.ID as ApprovalLevelID,
+AL.RELEASESTRATEGY,
+AL.APPROVALLEVEL,
+
+CG.COMPANYID,
+CG.GROUPCODE,
+
+ALPM.ID as ApprovalLevelPositionMapping,
+ALPM.APPROVALPOSITIONID,
+
+AP.USERID,
+AP.POSITIONCODE,
+AP.POSITIONNAME,
+AP.VALIDFROM,
+AP.VALIDTO,
+AP.SLADAYS
+
+from {ReleaseApproval} RA , {CIGroup} CG , {ApprovalLevel} AL , {ApprovalLevelPositionMapping} ALPM , {ApprovalPosition} AP
+Where AP.[Id] = ALPM.[ApprovalPositionId] and ALPM.[ApprovalLevelId] = AL.[Id] and AL.[ReleaseApprovalId] = RA.[Id] and RA.[CIGroupId] = CG.[Id]
+
+
+

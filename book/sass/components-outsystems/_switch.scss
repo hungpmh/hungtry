@@ -1,0 +1,36 @@
+input.switch,
+input.switch:empty:before {
+  height: $font-size-rem-32px;
+  width: $font-size-rem-52px;
+  border: 0;
+  border-radius: $font-size-rem-48px;
+}
+
+input.switch {
+  &:empty {
+    &:before {
+      background-color: $color-ink-5;
+      border-color: $color-ink-5;
+      transition: all 0.3s;
+    }
+    &:after {
+      box-shadow: none;
+      border: 1px solid $color-white;
+      top: $font-size-rem-4px;
+      left: $font-size-rem-4px;
+      height: $font-size-rem-22px;
+      width: $font-size-rem-22px;
+      transition: all 0.3s;
+    }
+  }
+
+  &:checked {
+    &:before {
+      background-color: $color-primary;
+      border-color: $color-primary;
+    }
+    &:after {
+      left: $font-size-rem-24px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+[data-block="Menu.InfoItem"]:first-child .info-item {
+  border-top: 0;
+}
+
+[data-block="Menu.InfoItem"] .info-item {
+  border-top: $border-line;
+}
+
+[data-block="Menu.InfoItemContainer"]:first-child .info-container {
+  margin-top: 0;
+}
+
+[data-block="Menu.InfoItemContainer"] .info-container {
+  margin-top: $font-size-rem-8px;
+}

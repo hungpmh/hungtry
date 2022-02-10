@@ -1,0 +1,43 @@
+html, body, a, select, fieldset, input, button, textarea, optgroup, option {
+  font-family: 'Roboto', sans-serif;
+}
+
+body, select, textarea, input, button {
+  color: $color-ink;
+  line-height: $font-size-rem-14px * 1.5;
+  font-size: $font-size-rem-14px;
+}
+
+body, .content {
+  background-color: $color-light;
+}
+
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+}
+
+[data-expression].ThemeGrid_MarginGutter {
+  margin-left: 0;
+}
+
+.feedback-message {
+  margin: 8px;
+  border-radius: 5px;
+}
+
+.feedback-message-wrapper {
+  & .feedback-message {
+    &-info { background-color: $color-primary; }
+    &-success { background-color: $color-green; }
+    &-warning { background-color: $color-orange; }
+    &-error { background-color: $color-red; }
+  }
+  & .feedback-message-text:empty:before {
+    content: '-';
+  }
+}

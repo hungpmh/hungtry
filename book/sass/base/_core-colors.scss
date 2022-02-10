@@ -1,0 +1,35 @@
+// Generate Background Color, Color
+@each $name, $value in ($colors) {
+  @each $x, $y in (background-color: bg, color: c, border: b) {
+    @if ($y == b) {
+      .#{$y}-#{$name} {
+        #{$x}: 1px solid $value !important;
+      }
+      .#{$y}-top-#{$name} {
+        #{$x}-top: 1px solid $value !important;
+      }
+      .#{$y}-right-#{$name} {
+        #{$x}-right: 1px solid $value !important;
+      }
+      .#{$y}-bottom-#{$name} {
+        #{$x}-bottom: 1px solid $value !important;
+      }
+      .#{$y}-left-#{$name} {
+        #{$x}-left: 1px solid $value !important;
+      }
+    } @else {
+      .#{$y}-#{$name} {
+        #{$x}: $value !important;
+      }
+    }
+  }
+}
+
+// Generate Border
+// @each $name, $value in ($colors) {
+//   @each $x, $y in (border: b) {
+//     .#{$y}-#{$name} {
+//       #{$x}: 1px solid $value !important;
+//     }
+//   }
+// }

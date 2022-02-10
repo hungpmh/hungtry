@@ -1,0 +1,103 @@
+
+.btn {
+  &, &:hover, &:focus {
+    min-height: $font-size-rem-56px;
+    min-width: 80px;
+    padding: $button-padding;
+    border: 0;
+    border-radius: $border-radius-base;
+    font-size: $font-size-rem-16px;
+    font-weight: 500;
+  }
+
+  &.btn-small {
+    &, &:hover, &:focus {
+      min-height: $font-size-rem-48px !important;
+      padding: $button-padding-small;
+    }
+  }
+
+  &.btn-inline {
+    &, &:focus, &:hover {
+      min-height: $font-size-rem-32px !important;
+      min-width: 68px;
+      padding: $button-inline-padding;
+      font-size: $font-size-rem-14px;
+    }
+  }
+  
+  &.btn-outline {
+    background-color: $color-white;
+    border: 1px solid $color-ink-10;
+    color: $color-ink-55;
+
+    &:active { transform: scale(0.95); }
+  }
+
+  color: rgba(1, 18, 34, 0.55);
+  border: 1px solid rgba(1, 18, 34, 0.1);
+
+  // Using this class when the button contain in color background container
+  &.btn-white {
+    background-color: $color-white;
+    border-color: transparent;
+    color: $color-primary;
+
+    &:active { transform: scale(0.95); }
+  }
+
+  // Using at Maybe button in Calendar screen
+  &.btn-gray-light {
+    background-color: $color-ink-10;
+    border-color: transparent;
+    color: $color-ink-55;
+
+    &:active { transform: scale(0.95); }
+  }
+
+  &.btn-login {
+    background-color: $color-white;
+    border-color: transparent;
+    color: $color-ink;
+
+    &[disabled] {
+      background-color: $color-white-80;
+    }
+
+    &:active { transform: scale(0.95); }
+    
+  }
+}
+
+@mixin buttonGenerator($name, $color, $isPrimary) {
+  $local-color: $color;
+  $local-color-30: rgba($color, 0.3);
+  $local-color-5: rgba($color, 0.05);
+
+  .btn.btn-#{$name} {
+    border-color: transparent;
+
+    @if($isPrimary) {
+      background-color: $local-color;
+      color: $color-white;
+    } @else {
+      background-color: $local-color-5;
+      color: $color;
+    }
+
+    &[disabled] {
+      background-color: $local-color-5;
+      color: $local-color-30;
+      border: 1px solid transparent;
+    }
+
+    &:active { transform: scale(0.95); }
+  }
+}
+
+@include buttonGenerator('primary', $color-primary, true);
+@include buttonGenerator('primary-light', $color-primary, false);
+@include buttonGenerator('success', $color-green, true);
+@include buttonGenerator('success-light', $color-green, false);
+@include buttonGenerator('danger', $color-red, true);
+@include buttonGenerator('danger-light', $color-red, false);

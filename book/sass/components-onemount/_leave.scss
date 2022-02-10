@@ -1,0 +1,91 @@
+.leave-request-details {
+  & .left-col {
+    width: 88px;
+    min-width: 88px;
+  }
+}
+
+.i-remark-arrow:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  top: -5px;
+  left: 11px;
+  border-bottom: 5px solid rgba(33, 105, 232, 0.05);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+// Leave type tracking
+// js-leave-wrapper
+.js-leave-wrapper.is--open {
+  & .js-leave-item {
+    opacity: 0.4;
+    pointer-events: none;
+
+    &.active {
+      opacity: 1;
+      pointer-events: auto;
+      border-radius: 12px;
+      border: 1px solid $color-primary;
+    }
+  }
+
+  & .js-leave-container-secondary {
+    margin-top: 12px;
+  }
+}
+
+.js-leave-wrapper .js-leave-container-secondary {
+  margin-top: 8px;
+}
+
+// js-leave-container
+.js-leave-container {
+  height: 142px;
+  transition: all 0.4s;
+
+  &.active {
+    height: 235px;
+
+    & .js-leave-details {
+      margin-top: 12px;
+    }
+  }
+}
+
+// js-leave-item
+.js-leave-item {
+  border: 1px solid transparent;
+  transition: opacity 0.2s;
+}
+
+// js-leave-details
+.js-leave-details {
+  transition: all 0.4s;
+
+  &.active {
+    top: 0;
+    opacity: 1;
+    display: flex !important;
+  }
+
+  &-1 {
+    top: -95px;
+    opacity: 0;
+    // display: none !important;
+  }
+
+  &-2 {
+    top: -190px;
+    opacity: 0;
+    // display: none !important;
+
+    &.active {
+      top: -95px;
+      opacity: 1;
+      display: flex !important;
+    }
+  }
+}

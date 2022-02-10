@@ -1,0 +1,24 @@
+.badge-custom {
+  position: absolute;
+  top: 4px;
+  background: $color-red;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-size: $font-size-rem-12px;
+  border: 2px solid #fff;
+
+  &.notifications {
+    left: 50%;
+    transform: translateX(3px);
+  }
+
+  &.module {
+    top: -8px;
+    right: -8px;
+  }
+}

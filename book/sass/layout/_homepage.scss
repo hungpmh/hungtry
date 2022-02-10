@@ -1,0 +1,146 @@
+.layout-homepage {
+  // & .background-image-header,
+  // & .background-color-header {
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // height: 100%;
+  // z-index: -2;
+  // pointer-events: none;
+  // background-image: url('/StaffPortalMobile/img/StaffPortalMobile.App_Background.svg');
+  // background-repeat: no-repeat;
+  // background-size: 100%;
+  // }
+
+  & .background-color-header {
+    background-color: $color-light;
+    top: 0;
+  }
+
+  & .module-container {
+    border-radius: 12px;
+    margin: 0 16px 12px 16px;
+    color: $color-ink;
+    display: grid;
+    // grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: $color-white;
+    padding: $font-size-rem-8px;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  & .module-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: column;
+    text-align: center;
+    // padding: 22px 0;
+    padding: 0 $font-size-rem-12px;
+    font-size: $font-size-rem-12px;
+    font-weight: 500;
+
+    // &:nth-child(3n + 1) {
+    //   border-left: none;
+    // }
+
+    // &:nth-child(-n + 3) {
+    //   border-top: none;
+    // }
+
+    & > div:not(:first-child) {
+      margin-top: $font-size-rem-8px;
+    }
+  }
+}
+
+[data-block="MainFlow.QuickApp_New"] {
+  padding-top: $font-size-rem-16px;
+  padding-bottom: $font-size-rem-16px;
+}
+
+// Override
+.layout.layout-homepage .screen .content {
+  background-color: $color-light;
+}
+
+//Remove code Dong
+// .layout:not(.blank) .content {
+//   border-radius: 0 !important;
+// }
+
+.quick-app {
+  &__name {
+    margin-top: $font-size-rem-8px;
+  }
+}
+
+// .module-name {
+//   margin-top: 8px !important;
+//   @include fs-s;
+// }
+
+.layout-homepage {
+  & .header-right {
+    & div,
+    & a {
+      width: 44px;
+      height: 44px;
+      border-radius: $border-radius-large;
+
+      & img {
+        width: 44px;
+        height: 44px;
+        border-radius: $border-radius-large;
+      }
+    }
+  }
+}
+
+.header a,
+.header a:link,
+.header a:visited {
+  color: $color-white;
+}
+
+.header .material-icons-round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.module-container {
+  & a,
+  & a:link,
+  & a:visited {
+    color: $color-ink;
+  }
+}
+
+.module-shadow-leave        { filter: drop-shadow(0px 3px 10px rgba(10,  148, 249, 0.25)); }
+.module-shadow-attendance   { filter: drop-shadow(0px 3px 10px rgba(53,  196, 146, 0.25)); }
+.module-shadow-task         { filter: drop-shadow(0px 3px 10px rgba(24,  54,  191, 0.25)); }
+.module-shadow-contact      { filter: drop-shadow(0px 3px 10px rgba(205, 47,  150, 0.25)); }
+.module-shadow-payslip      { filter: drop-shadow(0px 3px 10px rgba(127, 62,  255, 0.25)); }
+.module-shadow-aam          { filter: drop-shadow(0px 3px 10px rgba(55,  51,  70,  0.25)); }
+.module-shadow-pr           { filter: drop-shadow(0px 3px 10px rgba(47,  55,  80,  0.25)); }
+.module-shadow-po           { filter: drop-shadow(0px 3px 10px rgba(155, 120, 114, 0.25)); }
+.module-shadow-gr           { filter: drop-shadow(0px 3px 10px rgba(36,  94,  109, 0.25)); }
+.module-shadow-easy-meeting { filter: drop-shadow(0px 3px 10px rgba(71,  73,  154, 0.25)); }
+
+
+.pull-to-refresh {
+  background-color: $color-light;
+}
+
+.splash-copyright {
+  width: 100%;
+  position: absolute;
+  bottom: calc(var(--os-safe-area-bottom) + 20px);
+  font-size: 13px;
+  text-align: center;
+}

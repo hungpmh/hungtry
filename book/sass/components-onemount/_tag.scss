@@ -1,0 +1,45 @@
+// New version
+.tag-status {
+  padding: 4px 16px;
+  border-radius: $border-radius-base;
+  font-weight: bold;
+  display: block;
+
+  &.success {
+    background-color: $color-green-5;
+    color: $color-green;
+  }
+
+  &.danger {
+    background-color: $color-red-5;
+    color: $color-red;
+  }
+
+  &.warning {
+    background-color: $color-orange-5;
+    color: $color-orange;
+  }
+}
+
+// Deprecated
+.tag-status {
+  padding: 4px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: block;
+}
+
+.tag-status.approved {
+  background-color: $color-green-5;
+  color: $color-green;
+}
+
+.tag-status.rejected {
+  background-color: $color-red-5;
+  color: $color-red;
+}
+
+.tag-status.pending {
+  background-color: $color-orange-5;
+  color: $color-orange;
+}

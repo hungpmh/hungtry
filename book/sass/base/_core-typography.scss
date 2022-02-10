@@ -1,0 +1,21 @@
+// Generate Font-size
+@each $name, $value in ($font-size) {
+  .fs-#{$name} {
+    font-size: $value !important;
+    @if $name == b or $name == s {
+      line-height: $value * 1.5 !important;
+    } @else {
+      line-height: $value * 1.25 !important;
+    }
+  }
+}
+
+// Font-weight
+.fw-r { font-weight: $font-weight-regular; }
+.fw-m { font-weight: $font-weight-medium; }
+.fw-b { font-weight: $font-weight-bold; }
+
+// Font style
+.t-s { text-decoration: line-through !important; }
+.t-u { text-decoration: underline !important; }
+.t-i { font-style: italic !important; }

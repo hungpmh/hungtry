@@ -1,0 +1,131 @@
+.module-container-new {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 8px 12px 8px;
+
+  & .module-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: column;
+    text-align: center;
+    //padding: 20px 12px 0 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    & .text {
+      font-weight: 500;
+      margin-top: 8px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+[data-block="MainFlow.ModuleItem"],
+[data-block="MainFlow.ModuleItem2"],
+[data-block="MainFlow.ModuleHome"] {
+  display: flex;
+  width: 33.333%;
+  justify-content: center;
+  //padding: 24px 16px 16px 16px;
+  padding: 20px 16px 12px 16px;
+  align-items: center;
+  position: relative;
+  height: auto !important;
+
+  &:empty {
+    display: none;
+  }
+}
+
+[data-block="MainFlow.ModuleItem2"] {
+  display: flex;
+  width: 33.333%;
+  justify-content: center;
+  //padding: 24px 16px 16px 16px;
+  padding: 20px 16px 16px 16px;
+  align-items: center;
+  position: relative;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.sortable-chosen.sortable-drag {
+  box-shadow: 0 3px 7px rgb(168 168 168);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+
+  & .icon-badge {
+    display: none;
+  }
+}
+
+.sortable-ghost {
+  opacity: 0.3;
+
+  & .icon-badge {
+    display: none;
+  }
+}
+
+.new-module-block {
+  position: absolute;
+  top: -4px;
+  right: -38px;
+  padding-bottom: 5px;
+  padding-right: 2px;
+  width: 52px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-rem-10px;
+  color: $color-white;
+  background-image: url("/StaffPortalMobile/img/StaffPortalMobile.ModuleNew.svg");
+}
+
+.new-module-block-short {
+  position: absolute;
+  top: -14px;
+  right: -16px;
+  padding-bottom: 5px;
+  padding-right: 2px;
+  width: 36px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.675rem;
+  color: white;
+  background-image: url("/StaffPortalMobile/img/StaffPortalMobile.ModuleNew_Short.svg");
+}
+
+@mixin moduleShadowGenerator($module, $moduleColor) {
+  .module-shadow-#{$module} {
+    filter: $module;
+  }
+}
+
+
+.module-shadow-leave        { filter: drop-shadow(0px 3px 10px rgba(10,  148, 249, 0.25)); }
+.module-shadow-attendance   { filter: drop-shadow(0px 3px 10px rgba(53,  196, 146, 0.25)); }
+.module-shadow-task         { filter: drop-shadow(0px 3px 10px rgba(24,  54,  191, 0.25)); }
+.module-shadow-contact      { filter: drop-shadow(0px 3px 10px rgba(205, 47,  150, 0.25)); }
+.module-shadow-payslip      { filter: drop-shadow(0px 3px 10px rgba(127, 62,  255, 0.25)); }
+.module-shadow-aam          { filter: drop-shadow(0px 3px 10px rgba(55,  51,  70,  0.25)); }
+.module-shadow-pr           { filter: drop-shadow(0px 3px 10px rgba(47,  55,  80,  0.25)); }
+.module-shadow-po           { filter: drop-shadow(0px 3px 10px rgba(155, 120, 114, 0.25)); }
+.module-shadow-gr           { filter: drop-shadow(0px 3px 10px rgba(36,  94,  109, 0.25)); }
+.module-shadow-easymeeting  { filter: drop-shadow(0px 3px 10px rgba(71,  73,  154, 0.25)); }
+.module-shadow-pp           { filter: drop-shadow(0px 3px 10px rgba(123, 123, 123, 0.25)); }
+

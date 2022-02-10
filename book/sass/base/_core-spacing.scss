@@ -1,0 +1,37 @@
+@mixin spacingCreator($name, $value, $infix) {
+  #{$name}-#{$infix}: $value !important;
+}
+
+// Generate Margin, Padding
+@each $size, $value in ($sizes) {
+  @each $x, $y in (margin: mg, padding: pd) {
+    .#{$y}t-#{$size},
+    .#{$y}y-#{$size},
+    .#{$y}-#{$size} {
+      @include spacingCreator($x, $value, top);
+    }
+    .#{$y}b-#{$size},
+    .#{$y}y-#{$size},
+    .#{$y}-#{$size} {
+      @include spacingCreator($x, $value, bottom);
+    }
+    .#{$y}l-#{$size},
+    .#{$y}x-#{$size},
+    .#{$y}-#{$size} {
+      @include spacingCreator($x, $value, left);
+    }
+    .#{$y}r-#{$size},
+    .#{$y}x-#{$size},
+    .#{$y}-#{$size} {
+      @include spacingCreator($x, $value, right);
+    }
+
+    .#{$y}b-safe-#{$size} {
+      #{$x}-bottom: $value !important;
+
+      .iphonex & {
+        #{$x}-bottom: env(safe-area-inset-bottom) !important;
+      }
+    }
+  }
+}

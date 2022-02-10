@@ -1,0 +1,10 @@
+.header-action {
+  height: $font-size-rem-56px;
+  background: $color-white;
+  border-bottom: $border-line;
+  overflow-x: auto;
+
+  &:empty {
+    display: none;
+  }
+}

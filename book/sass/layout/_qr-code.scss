@@ -1,0 +1,181 @@
+.qr-code {
+  position: fixed;
+  left: 0;
+  top: 44px;
+  width: 0;
+  height: 0;
+  z-index: 50;
+}
+
+.qr-code-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  background: rgba(0,0,0,0.4);
+  will-change: opacity;
+  -webkit-transform: translateZ(0);
+  pointer-events: none;
+}
+
+.qr-code {
+  -servicestudio-display: none;
+}
+
+.qr-code-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  -webkit-transform: translateY(100vh) translateZ(0);
+  transform: translateY(100vh) translateZ(0);
+  -servicestudio-transform: unset;
+  z-index: 12;
+  will-change: auto;
+  padding: 0;
+}
+
+.qr-code--visible .qr-code-container {
+  -webkit-transform: translateX(0) translateZ(0);
+  transform: translateX(0) translateZ(0); 
+}
+
+.qr-code-content {
+  top: 50%;
+  width: 90vw;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: $border-radius-large;
+  position: fixed;
+  background-color: $color-white;
+  transform: translate(-50%, 100vh);
+}
+
+.qr-code-container .qr-code-content {
+  bottom: auto;
+}
+
+.qr-code--visible.qr-code--animatable .qr-code-content {
+  transition: all 330ms ease-out;
+}
+
+.qr-code--animatable .qr-code-content {
+  transition: all 190ms ease-in;
+}
+
+.qr-code--visible .qr-code-content {
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.qr-logo {
+  position: absolute;
+  margin-bottom: 8px;
+  padding: 5px;
+  background: #fff;
+}
+
+/*
+
+.QRLine {
+    border: 2px solid #dddddd;
+    border-radius: 4px;
+    height: 100px;
+    width: 1px;
+    left: 4px;
+    position: absolute;
+    bottom: calc(var(--os-safe-area-bottom) + 250px - 50px);
+    z-index: 1;
+    background-color: #dddddd;
+}
+
+.qr-code {
+  position: fixed;
+  left: 0;
+  top: 44px;
+  width: 0;
+  height: 0;
+  z-index: 10;
+}
+
+.qr-code-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  background: rgba(0,0,0,0.4);
+  will-change: opacity;
+  -webkit-transform: translateZ(0);
+  pointer-events: none;
+}
+
+.qr-code-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  -webkit-transform: translateX(97%) translateZ(0);
+  transform: translateX(97vw) translateZ(0);
+  -servicestudio-transform: unset;
+  z-index: 12;
+  will-change: auto;
+  padding-left: 10px;
+  height: 500px;
+}
+
+.qr-code--visible .qr-code-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.qr-code--animatable .qr-code-backdrop {
+    transition: all 190ms ease-in;
+}
+
+.qr-code--visible.qr-code--animatable .qr-code-backdrop {
+    transition: all 330ms ease-out;
+}
+
+.qr-code--visible .QRLine {
+    left: 14px;
+    border-color: grey;
+    background-color: grey;
+}
+
+.qr-code--visible .qr-code-container {
+    -webkit-transform: translateX(0) translateZ(0);
+            transform: translateX(0) translateZ(0);
+}
+
+.qr-code--animatable .qr-code-container {
+    transition: all 190ms ease-in;
+}
+
+.qr-code--visible.qr-code--animatable .qr-code-container {
+    transition: all 330ms ease-out;
+}
+
+.phone.landscape .qr-code--visible .qr-code-container {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+}
+
+.qr-code-container .qr-code-content {
+    background: white;
+    position: absolute;
+    bottom: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.qr-code-container .qr-code-btn-done {
+    padding-bottom: calc(var(--space-m) + var(--os-safe-area-bottom));
+}
+
+*/

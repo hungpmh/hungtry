@@ -1,0 +1,285 @@
+@import '_variables.scss';
+
+/*Màn hình to nhất*/
+
+.bcth{
+    font-weight: bold;
+  }
+
+.block1
+{
+    min-height: 100vh;
+    position: relative;
+}
+.block1__content {
+    margin: 0 auto calc(90px + 8vh) auto;
+    max-width: 1600px;
+    width: 100%;
+    padding: 15% 0 0 0;
+    color: #fff;
+}
+    
+.block1__content__text
+{
+    font-weight: bold;
+    margin: 0 50% 0 10%;
+    padding-bottom: 2%;
+
+}
+
+.block1__content__button
+{
+    .btn 
+    {
+    justify-content: flex-start;
+    }
+    margin: 0 50% 0 10%;
+}
+
+
+
+.bgv
+{
+    height: auto;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    z-index: -1;
+    aspect-ratio: auto 1920 / 1080;
+}
+
+.block2
+{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.block2__container {
+    align-items: center;
+    display: block;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+    height: Fill;
+    width: 50%;
+    padding: 2% 2% 2% 2%;
+}
+
+.block2 .block2__container .btn {
+    justify-content: flex-start !important;
+}
+
+
+.block2__img {
+    height: Fill;
+    justify-content: center;
+}
+
+.block3
+{
+    text-align: center;
+}
+
+.block3__container1
+{
+    margin-bottom: 5%;
+    margin-top: 5%;
+    padding: 0 5% 0 5%;
+    text-align: center;
+}
+.block3__container1__text1, .block3__container1__text2
+{
+    color: #68778A;
+    text-align: center;
+}
+
+.block3__container2
+{
+    padding-left: 2%;
+    text-align: left;  
+}
+
+.block3__container3
+{
+    display: flex;
+    margin-bottom: 5%;
+}
+.block3__container3__box1 {
+    display: block;
+    width: 30%;
+}
+
+.block3__container3__box1__1, .block3__container3__box1__2 {
+    padding: 2% 2% 2% 2%;
+    text-align: left;
+}
+
+.block3__container3__box2 {
+    width: 70%;
+}
+
+/* Accelerators - Continue with Google */
+.g-signin {
+    align-items: center;
+    background: var(--color-neutral-0);
+    border: var(--border-size-s) solid var(--color-neutral-6);
+    border-radius: var(--border-radius-soft);
+    color: var(--color-neutral-7);
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    padding: var(--space-base);
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+        filter: brightness(0.9);
+    }
+
+    & span.icon img {
+        vertical-align: middle;
+    }
+
+    & span {
+        &.buttonText
+        {
+            display: inline-block;
+            font-family: 'Roboto', sans-serif;
+            font-weight: var(--font-semi-bold);
+            font-size: var(--font-size-s);
+            line-height: 1;
+            padding-left: var(--space-base);
+            vertical-align: middle;
+        }
+    }
+}
+
+
+.continue-with-google a {
+    color: var(--color-neutral-7);
+    text-decoration: underline;
+
+    &:hover,&:visited,&:focus {
+        color: var(--color-neutral-7);
+    }
+}
+
+@mixin largeScreen {
+    @media (min-width: 1601px) {
+        @content;
+    }
+  }
+
+@mixin mediumLargeScreen {
+    @media (min-width: 1024px) and (max-width: 1600px) {
+        @content;
+    }
+}
+
+@mixin mediumScreen {
+    @media (min-width: 768px) and (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin smallScreen {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+/* Accelerators - Continue with Sample User */
+
+.continue-with-sample-user .btn {
+    border: var(--border-size-s) solid var(--color-neutral-6);
+    color: var(--color-neutral-7);
+}
+
+@include largeScreen {
+    .bcth{
+        font-size: $font-h2;
+    }
+    .bct{
+        font-size: $font-h3;
+    }
+    .bctn {
+        font-size: $font-h4;
+    }
+}
+@include mediumLargeScreen {
+    .block1__content {margin: 22px 0 59px;}    
+    .bcth{
+        font-size: $font-h3;
+    }
+    .bct{
+        font-size: $font-h4;
+    }
+    .bctn {
+        font-size: $font-h5;
+    }
+}
+@include mediumScreen {
+    .block1__content {margin: 22px 0 59px;}    
+
+    .bcth{
+        font-size: $font-h4;
+    }
+    .bct{
+        font-size: $font-h5;
+    }
+    .bctn {
+        font-size: $font-h6;
+    }
+}
+@include smallScreen {
+    .block1__content {
+        padding: 35% 5% 0 5%;
+    }
+    .block2
+    {
+        flex-flow: row wrap;
+    }
+    .block2__container
+    {
+        width: 100%;
+    }
+    .bcth{
+        font-size: $font-h4;
+    }
+    .bct{
+        font-size: $font-h5;
+    }
+    .bctn {
+        font-size: $font-h6;
+    }
+}
+/*Màn hình to trung*/
+// @media (max-width: 1199px)
+// {
+//     .block1__content {font-size: 20px;}
+// }
+
+/*Màn hình bé vừa*/
+// @media (max-width: 960px)
+// {
+//     .a1a2, .block1 {align-items: flex-start;}
+//     .block1__content {margin: 22px 0 59px; font-size: 12px;}
+// }
+
+/*Màn hình bé nhất*/
+// @media (max-width: 640px)
+// {
+//     .block1__content {
+//     padding: 25% 5% 0 5%;
+//     font-size: 8px;
+//     }
+// }
+
+
+
+
+

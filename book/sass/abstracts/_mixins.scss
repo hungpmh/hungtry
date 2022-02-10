@@ -1,0 +1,39 @@
+@mixin generateFontSize($value, $isHeading) {
+  font-size: $value;
+  @if($isHeading) {
+    line-height: $value * 1.25;
+  } @else {
+    line-height: $value * 1.5;
+  }
+}
+
+@mixin fs-h0 { @include generateFontSize($font-size-rem-32px, true) }
+@mixin fs-h1 { @include generateFontSize($font-size-rem-28px, true) }
+@mixin fs-h2 { @include generateFontSize($font-size-rem-24px, true) }
+@mixin fs-h3 { @include generateFontSize($font-size-rem-22px, true) }
+@mixin fs-h4 { @include generateFontSize($font-size-rem-20px, true) }
+@mixin fs-h5 { @include generateFontSize($font-size-rem-18px, true) }
+@mixin fs-h6 { @include generateFontSize($font-size-rem-16px, true) }
+@mixin fs-b  { @include generateFontSize($font-size-rem-14px, false) }
+@mixin fs-s  { @include generateFontSize($font-size-rem-12px, false) }
+@mixin fs-xs { @include generateFontSize($font-size-rem-10px, false) }
+
+@mixin generate-square($value) {
+  width: $value;
+  height: $value;
+}
+
+@mixin generate-fixed-width($value) {
+  min-width: $value;
+  max-width: $value;
+  width: $value;
+}
+
+@mixin spacing-container($value) {
+  display: flex;
+  flex-direction: column;
+  
+  & > *:not(script) + *:not(script) {
+    margin-top: $value;
+  }
+}

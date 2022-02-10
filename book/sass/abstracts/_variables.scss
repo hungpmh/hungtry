@@ -1,0 +1,88 @@
+// Font size in REM
+$font-size-rem-4px: 0.25rem;
+$font-size-rem-8px: 0.5rem;
+$font-size-rem-10px: 0.675rem;
+$font-size-rem-12px: 0.75rem;
+$font-size-rem-14px: 0.875rem;
+$font-size-rem-16px: 1rem;
+$font-size-rem-18px: 1.125rem;
+$font-size-rem-20px: 1.25rem;
+$font-size-rem-22px: 1.375rem;
+$font-size-rem-24px: 1.5rem;
+$font-size-rem-28px: 1.75rem;
+$font-size-rem-32px: 2rem;
+$font-size-rem-40px: 2.5rem;
+$font-size-rem-48px: 3rem;
+$font-size-rem-52px: 3.25rem;
+$font-size-rem-56px: 3.5rem;
+
+// Font weight
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Shadow box
+$box-shadow--none: none;
+$box-shadow--small: 0 3px 7px rgba(220, 35, 35, .1);
+$box-shadow--large: 0 15px 35px rgba(220, 35, 35, .1);
+
+// Width
+$carousel-items-width-2: 276px; 
+
+// Button
+$button-padding: $font-size-rem-16px $font-size-rem-12px;
+$button-padding-small: $font-size-rem-12px $font-size-rem-24px;
+$button-inline-padding: $font-size-rem-8px;
+
+// Colors
+$color-branding: #1e1464;//#0F1B70;//#000; 
+
+$color-primary: rgba(33,105,232,1); //rgba(30, 20, 100, 1); 
+$color-primary-80: rgba(33,105,232,.8);
+$color-primary-30: rgba(33,105,232,.3);
+$color-primary-10: rgba(33,105,232,.1);
+$color-primary-5: rgba(33,105,232,.05);
+
+$color-ink: rgba(1,18,34,1);
+$color-ink-55: rgba(1,18,34,.55);
+$color-ink-30: rgba(1,18,34,.3);
+$color-ink-10: rgba(1,18,34,.1);
+$color-ink-5: rgba(1,18,34,.05);
+
+$color-green: rgba(0,188,60,1);
+$color-green-80: rgba(0,188,60,.8);
+$color-green-30: rgba(0,188,60,.3);
+$color-green-10: rgba(0,188,60,.1);
+$color-green-5: rgba(0,188,60,.05);
+
+$color-orange: rgba(255,130,30,1);
+$color-orange-80: rgba(255,130,30,.7);
+$color-orange-30: rgba(255,130,30,.3);
+$color-orange-10: rgba(255,130,30,.1);
+$color-orange-5: rgba(255,130,30,.05);
+
+$color-red: rgba(220,35,35,1);
+$color-red-80: rgba(220,35,35,.7);
+$color-red-30: rgba(220,35,35,.3);
+$color-red-10: rgba(220,35,35,.1);
+$color-red-5: rgba(220,35,35,.05);
+
+$color-white: rgba(255,255,255,1);
+$color-white-80: rgba(255,255,255,.8);
+$color-white-20: rgba(255,255,255,.2);
+$color-white-10: rgba(255,255,255,.1);
+$color-white-5: rgba(255,255,255,.05);
+
+$color-light: #f2f3f4;//#f6f7f9;//rgb(250,253,255);
+
+$color-filter-default: invert(52%) sepia(15%) saturate(274%) hue-rotate(167deg) brightness(88%) contrast(91%);
+$color-filter-active: invert(38%) sepia(42%) saturate(7310%) hue-rotate(211deg) brightness(94%) contrast(93%);
+
+// Border
+$border-line: 1px solid $color-light;
+$border-line-thick: 4px solid $color-light;
+$border-radius-base: 5px;
+$border-radius-large: 12px;
+$border-radius-xl: 44px;
+
+// Module shadow

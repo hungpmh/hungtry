@@ -1,0 +1,29 @@
+.stack-list {
+  display: grid;
+  grid-template-columns: fit-content(32px) fit-content(24px) fit-content(24px) fit-content(24px);
+
+  & > div:empty {
+    display: none;
+  }
+
+  & div:not(:first-child) {
+    margin-left: -8px;
+  }
+
+  & > img {
+    border: 1px solid $color-white;
+  }
+
+  & .more-list {
+    border-radius: 50%;
+    min-height: 32px;
+    min-width: 32px;
+    width: 32px;
+    background: #2169e8;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+  }
+}

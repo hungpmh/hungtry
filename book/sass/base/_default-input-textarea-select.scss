@@ -1,0 +1,314 @@
+@mixin inputBaseStyle {
+  height: $font-size-rem-56px;
+  padding: $font-size-rem-16px $font-size-rem-24px;
+  background: $color-white;
+  border: 1px solid $color-ink-10;
+  border-radius: $border-radius-base;
+  position: relative;
+  font-size: $font-size-rem-14px;
+  user-select: auto;
+  -webkit-user-select: auto;
+  -webkit-appearance: none;
+  // caret-color: $color-primary;
+}
+
+// Elements: <input> | <textarea>
+// Scope:    data-popup
+// Mixin:    inputBaseStyle
+[data-popup] {
+  & input[data-input],
+  & input[data-input]:empty {
+    @include inputBaseStyle;
+  }
+
+  & textarea[data-textarea],
+  & textarea[data-textarea]:empty {
+    @include inputBaseStyle;
+  }
+}
+
+// Elements: <input> | <textarea> | <select>
+// Mixin:    inputBaseStyle
+.search input[data-input],
+.search input[data-input]:empty,
+input[data-input],
+input[data-input]:empty,
+textarea[data-textarea],
+textarea[data-textarea]:empty,
+[data-dropdown] > select.dropdown-display {
+  @include inputBaseStyle;
+}
+
+// Elements: <input>
+// Scope:    small-height
+input[data-input].small {
+  height: 2.75rem;
+}
+
+// Elements: <input> | <select> | <textarea>
+// Property: font-weight        | font-weight
+// Value:    500                | 400
+input[data-input],
+[data-dropdown] > select.dropdown-display {
+  font-weight: 500;
+  user-select: auto;
+  -webkit-user-select: auto;
+}
+
+textarea[data-textarea] {
+  font-weight: 400;
+}
+
+// Elements: <input> | <textarea>
+// Scope:    input-placeholder
+// Property: color
+// Value:    gray
+input[data-input],
+textarea[data-textarea] {
+  &::-webkit-input-placeholder {
+    color: $color-ink-55;
+  }
+}
+
+// Elements: <textarea>
+// Property: height, padding
+[data-popup] textarea[data-textarea],
+[data-popup] textarea[data-textarea]:empty,
+textarea[data-textarea],
+textarea[data-textarea]:empty {
+  height: auto;
+  padding: $font-size-rem-16px $font-size-rem-24px;
+  resize: none;
+}
+
+// Elements: <input> | <textarea> | <select>
+// State:    focus
+// Property: border
+// Value:    primary color
+input[data-input]:focus,
+textarea[data-textarea]:focus,
+[data-dropdown] > select.dropdown-display:focus {
+  border: 1px solid $color-primary;
+}
+
+// Elements: <select>
+// Scope:    no-border
+// State:    focus
+.dropdown-inline [data-dropdown] > select.dropdown-display:focus {
+  border: 0;
+}
+
+// Scope:    error-message
+// Property: border
+// Value:    red
+[data-popup] input[data-input].not-valid,
+[data-popup] input[data-input].not-valid:focus,
+[data-popup] textarea[data-textarea].not-valid,
+[data-popup] textarea[data-textarea].not-valid:focus,
+[data-popup] div.dropdown-display.not-valid,
+[data-popup] div.button-group.not-valid > div,
+input[data-input].not-valid,
+input[data-input].not-valid:focus,
+textarea[data-textarea].not-valid,
+textarea[data-textarea].not-valid:focus,
+div.dropdown-display.not-valid,
+div.button-group.not-valid > div {
+  border: 1px solid $color-red;
+}
+
+// Scope:    error-message
+// Property: color
+// Value:    red
+span.validation-message {
+  color: $color-red;
+  margin-left: 0;
+  @include fs-s;
+  display: block;
+  margin-top: 4px;
+}
+
+// Elements: <input> | <textarea> | <select>
+// State:    disabled
+input[data-input][disabled],
+input[data-input][readonly],
+textarea[data-textarea][disabled],
+textarea[data-textarea][readonly],
+[data-dropdown] > select.dropdown-display[disabled],
+[data-dropdown] > select.dropdown-display[readonly] {
+  background-color: $color-ink-5;
+  color: $color-ink-55;
+  border: 1px solid $color-ink-10;
+}
+
+
+
+
+
+
+.dropdown-container:after {
+  border: 2px solid #455a64;
+  width: 7px;
+  height: 7px;
+  right: 20px;
+}
+
+.dropdown-inline .dropdown-container {
+  &:after {
+    right: 8px;
+  }
+  & select {
+    border: 0;
+    padding-left: 8px;
+    padding-right: 36px;
+  }
+}
+
+.dropdown-hide-arrow .dropdown-container {
+  &:after {
+    display: none;
+  }
+}
+
+
+
+// Unknown
+div.dropdown-display-content > span,
+div.dropdown-display-content > div {
+  font-size: $font-size-rem-14px;
+}
+
+
+
+
+// Backup
+/*---------- $4. Forms, controls and validation ----------*/
+// input[data-input],
+// [data-dropdown] > select.dropdown-display {
+//   font-weight: 500;
+//   user-select: auto;
+//   -webkit-user-select: auto;
+// }
+
+// textarea[data-textarea] {
+//   font-weight: 400;
+// }
+
+// .search input[data-input],
+// .search input[data-input]:empty,
+// [data-popup] input[data-input],
+// [data-popup] input[data-input]:empty,
+// input[data-input],
+// input[data-input]:empty,
+// [data-popup] textarea[data-textarea],
+// [data-popup] textarea[data-textarea]:empty,
+// textarea[data-textarea],
+// textarea[data-textarea]:empty,
+// [data-dropdown] > select.dropdown-display {
+//   height: $font-size-rem-56px;
+//   padding: $font-size-rem-16px $font-size-rem-24px;
+//   background: $color-white;
+//   border: 1px solid $color-ink-10;
+//   border-radius: $border-radius-base;
+//   position: relative;
+//   font-size: $font-size-rem-14px;
+//   user-select: auto;
+//   -webkit-user-select: auto;
+//   -webkit-appearance: none;
+//   caret-color: $color-primary;
+// }
+
+// .search input[data-input]::-webkit-input-placeholder,
+// input[data-input]::-webkit-input-placeholder,
+// textarea[data-textarea]::-webkit-input-placeholder {
+//   color: $color-ink-55;
+// }
+
+// [data-popup] textarea[data-textarea],
+// [data-popup] textarea[data-textarea]:empty,
+// textarea[data-textarea],
+// textarea[data-textarea]:empty {
+//   height: auto;
+//   padding: $font-size-rem-16px $font-size-rem-24px;
+//   resize: none;
+// }
+
+// span.validation-message {
+//   color: $color-red;
+// }
+
+// div.dropdown-display-content > span,
+// div.dropdown-display-content > div {
+//   font-size: $font-size-rem-14px;
+// }
+
+// input[data-input]:focus,
+// textarea[data-textarea]:focus,
+// [data-dropdown] > select.dropdown-display:focus {
+//   border: 1px solid $color-primary;
+// }
+
+// .dropdown-inline [data-dropdown] > select.dropdown-display:focus {
+//   border: 0;
+// }
+
+// input[data-input][disabled],
+// input[data-input][readonly],
+// textarea[data-textarea][disabled],
+// textarea[data-textarea][readonly],
+// [data-dropdown] > select.dropdown-display[disabled],
+// [data-dropdown] > select.dropdown-display[readonly] {
+//   background-color: $color-ink-5;
+//   color: $color-ink-55;
+//   border: 1px solid $color-ink-10;
+// }
+
+// [data-popup] input[data-input].not-valid,
+// [data-popup] input[data-input].not-valid:focus,
+// [data-popup] textarea[data-textarea].not-valid,
+// [data-popup] textarea[data-textarea].not-valid:focus,
+// [data-popup] div.dropdown-display.not-valid,
+// [data-popup] div.button-group.not-valid > div,
+// input[data-input].not-valid,
+// input[data-input].not-valid:focus,
+// textarea[data-textarea].not-valid,
+// textarea[data-textarea].not-valid:focus,
+// div.dropdown-display.not-valid,
+// div.button-group.not-valid > div {
+//   border: 1px solid $color-red;
+// }
+
+// .dropdown-container:after {
+//   border: 2px solid #455a64;
+//   width: 7px;
+//   height: 7px;
+//   right: 20px;
+// }
+
+// .dropdown-inline .dropdown-container {
+//   &:after {
+//     right: 8px;
+//   }
+//   & select {
+//     border: 0;
+//     padding-left: 8px;
+//     padding-right: 36px;
+//   }
+// }
+
+// .dropdown-hide-arrow .dropdown-container {
+//   &:after {
+//     display: none;
+//   }
+// }
+
+// input[data-input].small {
+//   height: 2.75rem;
+// }
+
+// span.validation-message {
+//   margin-left: 0;
+// }
+
+// // label {
+// //   color: #77909c;
+// // }

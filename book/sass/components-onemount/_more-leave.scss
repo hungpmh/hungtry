@@ -1,0 +1,10 @@
+.more-leave {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+
+  &.show {
+    max-height: 800px;
+    transition: all 0.3s ease-in;
+  }
+}

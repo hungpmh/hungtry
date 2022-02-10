@@ -1,0 +1,32 @@
+.week-day {
+  background-color: #fff;
+  border-radius: $border-radius-base;
+  padding: $font-size-rem-8px $font-size-rem-4px;
+  font-size: $font-size-rem-12px;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &.is--selected {
+    background-color: $color-primary !important;
+
+    & span {
+      color: $color-white !important;
+    }
+  }
+
+  & span {
+    &:first-child {
+      color: $color-ink-55;
+    }
+
+    &:last-child {
+      color: $color-ink;
+    }
+  }
+}

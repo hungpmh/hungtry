@@ -1,0 +1,127 @@
+select *
+from {ReleaseApproval} RA , {CIGroup} CG , {FundGroup} FG, {ApprovalLevel} AL , {ApprovalLevelPositionMapping} ALPM , {ApprovalPosition} AP
+Where AP.[Id] = ALPM.[ApprovalPositionId] , ALPM.[ApprovalLevelId] = AL.[Id] , AL.[ReleaseApprovalId] = RA.[Id] , RA.[FundGroupId] = FG.[Id] , RA.[CIGroupId] = CG.[Id]
+
+select *
+From  ReleaseApproval RA , CIGroup CG , FundGroup FG, ApprovalLevel AL , ApprovalLevelPositionMapping ALPM , ApprovalPosition AP
+Where AP.Id = ALPM.ApprovalPositionId and ALPM.ApprovalLevelId = AL.Id , AL.ReleaseApprovalId = RA.Id , RA.FundGroupId = FG.Id , RA.CIGroupId = CG.Id
+
+ReleaseApproval AS RA, CI_Group AS CG, FundGroup AS FG, ApprovalLevel AS AL, ApprovalLevelPositionMapping AS ALPM, ApprovalPosition AS AP
+
+
+Bảng 1:
+select * 
+from {ReleaseApproval} RA , {CIGroup} CG
+where CG.ID = RA.[CIGroupId]
+
+Bảng 2:
+
+select *
+from {ReleaseApproval} RA, {FundGroup} FG
+Where RA.[FundGroupId] = FG.[Id]
+
+Bảng bebe3:
+
+select *
+from {ApprovalPosition} AP, {ApprovalLevelPositionMapping} ALPM
+where ap.id = alpm.[ApprovalPositionId]
+
+bang be3:
+
+select *
+from {ApprovalLevel} AL, {ApprovalLevelPositionMapping} ALPM
+where AL.[Id] = ALPM.[ApprovalLevelId]
+
+bang 3:
+
+select *
+from {ApprovalLevel} AL, {ReleaseApproval} RA
+where AL.[ReleaseApprovalId] = RA.[Id]
+
+bang 3be3bebe3:
+
+select *
+from {ApprovalLevel} AL, {ApprovalLevelPositionMapping} ALPM, {ApprovalPosition} AP
+where AL.[Id] = ALPM.[ApprovalLevelId] and AP.ID = ALPM.[ApprovalPositionId]
+
+
+bang tong:
+
+select *
+from {ReleaseApproval} RA , {CIGroup} CG , {ApprovalLevel} AL , {ApprovalLevelPositionMapping} ALPM , {ApprovalPosition} AP
+Where AP.[Id] = ALPM.[ApprovalPositionId] and ALPM.[ApprovalLevelId] = AL.[Id] and AL.[ReleaseApprovalId] = RA.[Id] and RA.[CIGroupId] = CG.[Id]
+
+RA.ID,
+RA.RELEASEGROUPID,
+RA.RELEASETYPE,
+RA.RELEASESTRATEGY,
+RA.CIGROUPID,
+RA.FUNDCENTERID,
+RA.FUNDTYPE,
+RA.AMOUNTFROM,
+RA.AMOUNTTO,
+RA.FUNDGROUPID,
+RA.COMPANYID,
+RA.FUND,
+
+AL.ID,
+AL.RELEASEAPPROVALID,
+AL.RELEASESTRATEGY,
+AL.APPROVALLEVEL,
+
+ALPM.ID,
+ALPM.APPROVALLEVELID,
+ALPM.APPROVALPOSITIONID,
+
+AP.ID,
+AP.USERID,
+AP.POSITIONCODE,
+AP.POSITIONNAME,
+AP.VALIDFROM,
+AP.VALIDTO,
+AP.SLADAYS,
+
+CG.ID,
+CG.COMPANYID,
+CG.CIGROUPNAME,
+CG.GROUPCODE,
+
+
+select 
+ALPM.ID as ApprovalLevelPositionMapping,
+
+AL.ID as ApprovalLevel,
+AL.RELEASESTRATEGY,
+AL.APPROVALLEVEL,
+AL.RELEASEAPPROVALID,
+
+RA.RELEASEGROUPID,
+RA.RELEASETYPE,
+RA.RELEASESTRATEGY,
+RA.FUNDCENTERID,
+RA.FUNDTYPE,
+RA.AMOUNTFROM,
+RA.AMOUNTTO,
+RA.FUNDGROUPID,
+RA.COMPANYID,
+RA.FUND,
+RA.CIGROUPID,
+
+CG.COMPANYID,
+CG.CIGROUPNAME,
+CG.GROUPCODE,
+
+ALPM.APPROVALPOSITIONID,
+
+AP.USERID,
+AP.POSITIONCODE,
+AP.POSITIONNAME,
+AP.VALIDFROM,
+AP.VALIDTO,
+AP.SLADAYS
+
+from {ReleaseApproval} RA , {CIGroup} CG , {ApprovalLevel} AL , {ApprovalLevelPositionMapping} ALPM , {ApprovalPosition} AP
+Where AP.[Id] = ALPM.[ApprovalPositionId] and ALPM.[ApprovalLevelId] = AL.[Id] and AL.[ReleaseApprovalId] = RA.[Id] and RA.[CIGroupId] = CG.[Id]
+
+
+

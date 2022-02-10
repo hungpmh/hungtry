@@ -1,0 +1,50 @@
+@mixin sizeContainer-type($property, $name, $value, $step, $type) {
+  @if $type == "%" {
+    .#{$name}-#{$value*$step} {
+      #{$property}: $value * $step * 1% !important;
+    }
+  }
+  @if $type == "px" {
+    .#{$name}-#{$value*$step}px {
+      #{$property}: $value * $step * 1px !important;
+    }
+  }
+  @if $type == "vw" {
+    .#{$name}-#{$value*$step}vw {
+      #{$property}: $value * $step * 1vw !important;
+    }
+  }
+  @if $type == "vh" {
+    .#{$name}-#{$value*$step}vh {
+      #{$property}: $value * $step * 1vh !important;
+    }
+  }
+}
+
+@mixin sizeContainer($type, $i, $value) {
+  @include sizeContainer-type(width, "w", $i, $value, $type);
+  @include sizeContainer-type(min-width, "min-w", $i, $value, $type);
+  @include sizeContainer-type(max-width, "max-w", $i, $value, $type);
+  @include sizeContainer-type(height, "h", $i, $value, $type);
+  @include sizeContainer-type(min-height, "min-h", $i, $value, $type);
+  @include sizeContainer-type(max-height, "max-h", $i, $value, $type);
+}
+
+// Generate Width, Height, Max-width, Max-height, Min-width, Min-height
+@for $i from 0 through 20 {
+  @include sizeContainer("%", $i, 5);
+}
+
+@for $i from 0 through 25 {
+  @include sizeContainer("px", $i, 4);
+	@include sizeContainer("vh", $i, 4);
+  @include sizeContainer("vw", $i, 4);
+}
+
+// Generate Top, Right, Bottom, Left
+@for $i from -40 through 40 {
+  .top-#{$i} { top: $i + 'px'; }
+  .right-#{$i} { right: $i + 'px'; }
+  .bottom-#{$i} { bottom: $i + 'px'; }
+  .left-#{$i} { left: $i + 'px'; }
+}

@@ -1,0 +1,16 @@
+.btn-action-container {
+  & .btn-action {
+    & * {
+      width: 100%;
+    }
+  }
+
+  &.two-element {
+    & .btn,
+    & .btn:hover,
+    & .btn:focus {
+      min-height: $font-size-rem-48px !important;
+      padding: $button-padding-small;
+    }
+  }
+}

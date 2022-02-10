@@ -1,0 +1,48 @@
+.layout.layout-homepage .header {
+  background-color: transparent !important;
+}
+
+.layout.layout-main .header {
+  background-color: $color-branding;
+}
+
+.attachment-link__icon {
+  min-width: 48px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: $color-primary-5;
+}
+
+.navi-item.active {
+  box-shadow: inset 0 -3px 0 $color-primary;
+  color: $color-primary;
+  font-weight: 500;
+}
+
+.navi-item {
+  padding: 16px 0;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-ink-55;
+  position: relative;
+
+  & .navi-item-badge {
+    position: absolute;
+    font-size: $font-size-rem-10px;
+    top: 4px;
+    left: 50%;
+    transform: translateX(12px);
+    font-weight: 500;
+  }
+}
+
+// .header-title {
+//   font-weight: 500;
+// }

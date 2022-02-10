@@ -1,0 +1,7 @@
+.attendance-list-item {
+  margin-top: $font-size-rem-12px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}

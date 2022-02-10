@@ -1,0 +1,44 @@
+@import 'abstracts/variables';
+@import 'abstracts/variableList';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+
+@import 'components-outsystems/popup';
+@import 'components-outsystems/button-group';
+@import 'components-outsystems/accordion';
+
+// Components Custom
+@import 'components_custom/weekly-calendar';
+
+// Layout
+@import 'layout/footer';
+@import 'layout/header';
+@import 'layout/homepage';
+@import 'layout/action-header';
+@import 'layout/qr-code';
+
+// Pages
+// @import 'pages/homepage';
+// @import 'pages/menu';
+@import 'pages/utilities';
+
+// Sections
+@import 'components-onemount/activity-history';
+@import 'components-onemount/news';
+@import 'components-onemount/notification';
+@import 'components-onemount/info-item';
+@import 'components-onemount/attendance';
+@import 'components-onemount/attachment-item';
+@import 'components-onemount/tab';
+@import 'components-onemount/leave';
+@import 'components-onemount/more-leave';
+@import 'components-onemount/user-avatar';
+@import 'components-onemount/button-action-container';
+@import 'components-onemount/time-picker';
+@import 'components-onemount/easy-meeting';
+@import 'components-onemount/generate-map';
+@import 'components-onemount/module-management';
+@import 'components-onemount/popup-bottom-up';
+@import 'components-onemount/tag';
+@import 'components-onemount/float-button';
+@import 'components-onemount/badge';

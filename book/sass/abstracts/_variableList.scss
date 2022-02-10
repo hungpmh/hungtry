@@ -1,0 +1,63 @@
+// Font size
+
+
+// Spacing size
+$sizes: (
+  none: 0,
+  xxs: $font-size-rem-4px,
+  xs:  $font-size-rem-8px,
+  sm:  $font-size-rem-12px,
+  md:  $font-size-rem-16px,
+  lg:  $font-size-rem-24px,
+  xl:  $font-size-rem-32px,
+  xxl: $font-size-rem-48px,
+);
+
+// Font size
+$font-size: (
+  h0: $font-size-rem-32px,
+  h1: $font-size-rem-28px,
+  h2: $font-size-rem-24px,
+  h3: $font-size-rem-22px,
+  h4: $font-size-rem-20px,
+  h5: $font-size-rem-18px,
+  h6: $font-size-rem-16px,
+  b:  $font-size-rem-14px,
+  s:  $font-size-rem-12px,
+  xs: $font-size-rem-10px,
+);
+
+// Colors
+$colors: (
+  primary:   $color-primary,
+  primary80: $color-primary-80,
+  primary30: $color-primary-30,
+  primary10: $color-primary-10,
+  primary5:  $color-primary-5,
+  ink:       $color-ink,
+  ink55:     $color-ink-55,
+  ink30:     $color-ink-30,
+  ink10:     $color-ink-10,
+  ink5:      $color-ink-5,
+  green:     $color-green,
+  green80:   $color-green-80,
+  green30:   $color-green-30,
+  green10:   $color-green-10,
+  green5:    $color-green-5,
+  orange:    $color-orange,
+  orange80:  $color-orange-80,
+  orange30:  $color-orange-30,
+  orange10:  $color-orange-10,
+  orange5:   $color-orange-5,
+  red:       $color-red,
+  red80:     $color-red-80,
+  red30:     $color-red-30,
+  red10:     $color-red-10,
+  red5:      $color-red-5,
+  light:     $color-light,
+  white:     $color-white,
+  white80:   $color-white-80,
+  white20:   $color-white-20,
+  white10:   $color-white-10,
+  white5:    $color-white-5,
+);
