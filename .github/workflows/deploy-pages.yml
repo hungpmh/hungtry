@@ -1,10 +1,10 @@
-name: Deploy Frontend to GitHub Pages
+name: Deploy HQT Website to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - "frontend/**"
+      - "hqt-website/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -25,31 +25,29 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: hqt-website/package-lock.json
 
       - name: Install dependencies
-        run: npm install
-        working-directory: frontend
+        run: npm ci
+        working-directory: hqt-website
 
-      - name: Build
+      - name: Type check and build
         env:
+          # Project site is served from https://<owner>.github.io/<repo>/
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
         run: npm run build
-        working-directory: frontend
+        working-directory: hqt-website
 
-      - name: Add SPA fallback for client-side routing
+      - name: Add SPA fallback
         run: cp dist/index.html dist/404.html
-        working-directory: frontend
+        working-directory: hqt-website
 
-      - uses: actions/configure-pages@v5
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          enablement: true
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: frontend/dist
+          path: hqt-website/dist
 
   deploy:
     needs: build
@@ -58,5 +56,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Requires GitHub Pages to be enabled once in the repository settings
+      # (Settings -> Pages -> Build and deployment -> Source: GitHub Actions).
+      # The GITHUB_TOKEN cannot create the Pages site itself.
+      - uses: actions/configure-pages@v5
       - id: deployment
         uses: actions/deploy-pages@v4

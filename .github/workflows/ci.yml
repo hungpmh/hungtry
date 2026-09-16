@@ -59,3 +59,24 @@ jobs:
         working-directory: frontend
       - run: npm run build
         working-directory: frontend
+
+  hqt-website:
+    name: HQT Website Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: hqt-website/package-lock.json
+      - run: npm ci
+        working-directory: hqt-website
+      - name: Build (GitHub Pages base path)
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+        run: npm run build
+        working-directory: hqt-website
+      - name: Run smoke tests
+        run: npm test --if-present
+        working-directory: hqt-website
