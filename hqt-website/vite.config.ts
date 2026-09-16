@@ -32,7 +32,7 @@ function seoPlugin(base: string): Plugin {
       addressLocality: company.contact.address.city,
       addressCountry: company.contact.address.countryCode,
     },
-    areaServed: ['VN', ...company.sourcingOrigins],
+    areaServed: [company.contact.address.country, ...company.sourcingOrigins],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',

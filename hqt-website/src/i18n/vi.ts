@@ -7,7 +7,7 @@ const vi: Dictionary = {
   meta: {
     title: 'HQT Group | Nhập khẩu · Xuất khẩu · Logistics chuỗi lạnh',
     description:
-      'HQT Group nhập khẩu thủy hải sản, thịt và gia cầm đông lạnh từ Ấn Độ, Nga và các thị trường đối tác khác, xuất khẩu hàng Việt Nam, đồng thời cung cấp dịch vụ logistics chuỗi lạnh kiểm soát nhiệt độ cho các nhà phân phối trên toàn quốc.',
+      'HQT Group nhập khẩu thủy hải sản, thịt và gia cầm đông lạnh từ Ấn Độ, Nga và các thị trường đối tác, xuất khẩu hàng Việt Nam và cung cấp logistics chuỗi lạnh toàn quốc.',
   },
   common: {
     tagline: 'Nhập khẩu · Xuất khẩu · Logistics chuỗi lạnh',
@@ -15,10 +15,8 @@ const vi: Dictionary = {
     openMenu: 'Mở menu',
     closeMenu: 'Đóng menu',
     language: 'Ngôn ngữ',
-    switchToVi: 'Chuyển sang tiếng Việt',
-    switchToEn: 'Switch to English',
-    learnMore: 'Tìm hiểu thêm',
-    placeholderNotice: 'Thông tin tạm thời - đang chờ xác nhận',
+    navPrimary: 'Điều hướng chính',
+    navFooter: 'Chân trang',
   },
   nav: {
     about: 'Giới thiệu',
@@ -31,13 +29,18 @@ const vi: Dictionary = {
     cta: 'Nhận báo giá',
   },
   hero: {
-    eyebrow: 'Đối tác nhập khẩu · xuất khẩu · chuỗi lạnh tại Việt Nam',
+    eyebrow: 'Đối tác nhập khẩu · xuất khẩu · chuỗi lạnh tại Việt\u00A0Nam',
     title: 'Hàng đông lạnh giao tận nơi, chuỗi lạnh không gián đoạn.',
     subtitle:
       'HQT Group tìm nguồn thủy hải sản, thịt và gia cầm đông lạnh từ các nhà cung cấp quốc tế uy tín và phân phối đến các nhà phân phối trên khắp Việt Nam - đúng quy định, kiểm soát nhiệt độ nghiêm ngặt và đúng tiến độ.',
     ctaPrimary: 'Liên hệ ngay',
     ctaSecondary: 'Dịch vụ của chúng tôi',
     visualLabel: 'Hình minh họa chuỗi cung ứng kiểm soát nhiệt độ từ nơi xuất xứ đến điểm đến',
+    illustration: {
+      frozen: 'ĐÔNG LẠNH',
+      inTransit: 'ĐANG VẬN CHUYỂN',
+      hub: 'TRUNG TÂM HQT',
+    },
     stats: [
       { label: 'Nguồn hàng đa quốc gia', detail: 'Ấn Độ, Nga và các thị trường đối tác khác' },
       { label: 'Kiểm soát nhiệt độ xuyên suốt', detail: 'Từ kho lạnh tại nguồn đến kho của bạn' },
@@ -137,7 +140,7 @@ const vi: Dictionary = {
   },
   markets: {
     eyebrow: 'Thị trường & nguồn hàng',
-    title: 'Từ những nguồn hàng uy tín đến Việt Nam và khu vực',
+    title: 'Từ những nguồn hàng uy tín đến Việt\u00A0Nam và khu vực',
     intro:
       'Mạng lưới nguồn hàng đa quốc gia giúp nhà phân phối duy trì nguồn cung ổn định và có nhiều lựa chọn cạnh tranh qua các mùa vụ.',
     originsTitle: 'Nguồn hàng',
@@ -153,6 +156,7 @@ const vi: Dictionary = {
     ],
     diagramLabel: 'Sơ đồ dòng hàng từ các nguồn cung qua kho lạnh HQT Group đến các điểm đến',
     hub: 'Trung tâm chuỗi lạnh HQT Group',
+    hubNote: '-18 °C · kiểm soát nhiệt độ',
   },
   whyUs: {
     eyebrow: 'Vì sao chọn HQT',
@@ -240,7 +244,7 @@ const vi: Dictionary = {
       messagePlaceholder: 'Sản phẩm, quy cách, sản lượng, điểm giao và thời gian mong muốn...',
       required: 'Bắt buộc',
       submit: 'Mở trong ứng dụng email',
-      note: 'Khi gửi, ứng dụng email của bạn sẽ mở với nội dung đã được điền sẵn - không có gì được gửi đi cho đến khi bạn nhấn gửi. Bạn muốn dùng kênh khác? Hãy email hoặc nhắn tin trực tiếp theo thông tin bên trái.',
+      note: 'Khi gửi, ứng dụng email của bạn sẽ mở với nội dung đã được điền sẵn - không có gì được gửi đi cho đến khi bạn nhấn gửi. Bạn muốn dùng kênh khác? Hãy email hoặc nhắn tin trực tiếp theo thông tin liên hệ trong mục này.',
       success: 'Ứng dụng email của bạn đã được mở với nội dung điền sẵn. Nếu không có gì xảy ra, vui lòng gửi email trực tiếp đến',
       errors: {
         name: 'Vui lòng nhập họ và tên.',

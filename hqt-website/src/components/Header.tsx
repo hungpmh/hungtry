@@ -13,6 +13,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const active = useActiveSection(SECTION_IDS)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const headerRef = useRef<HTMLElement>(null)
 
   // Elevate the header once the page is scrolled.
   useEffect(() => {
@@ -22,7 +23,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close the mobile menu on Escape and when resizing to desktop.
+  // Close the mobile menu on Escape, on a click/tap outside the header and when resizing to desktop.
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
@@ -31,13 +32,18 @@ export function Header() {
         menuButtonRef.current?.focus()
       }
     }
+    const onPointerDown = (e: PointerEvent) => {
+      if (headerRef.current && e.target instanceof Node && !headerRef.current.contains(e.target)) setOpen(false)
+    }
     const onResize = () => {
       if (window.innerWidth >= 1024) setOpen(false)
     }
     window.addEventListener('keydown', onKey)
+    document.addEventListener('pointerdown', onPointerDown)
     window.addEventListener('resize', onResize)
     return () => {
       window.removeEventListener('keydown', onKey)
+      document.removeEventListener('pointerdown', onPointerDown)
       window.removeEventListener('resize', onResize)
     }
   }, [open])
@@ -54,6 +60,7 @@ export function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={clsx(
         'sticky top-0 z-40 border-b backdrop-blur transition-shadow',
         'bg-white/90 dark:bg-navy-950/90',
@@ -67,7 +74,7 @@ export function Header() {
           <Logo />
         </a>
 
-        <nav aria-label="Primary" className="hidden items-center lg:flex">
+        <nav aria-label={t.common.navPrimary} className="hidden items-center lg:flex">
           <ul className="flex items-center gap-0 xl:gap-0.5">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
@@ -91,7 +98,7 @@ export function Header() {
           <button
             ref={menuButtonRef}
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-navy-800 hover:bg-navy-50 lg:hidden dark:text-navy-100 dark:hover:bg-navy-800"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-navy-800 hover:bg-navy-50 lg:hidden dark:text-navy-100 dark:hover:bg-navy-800"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? t.common.closeMenu : t.common.openMenu}
@@ -104,7 +111,7 @@ export function Header() {
 
       <nav
         id="mobile-menu"
-        aria-label="Primary mobile"
+        aria-label={t.common.navPrimary}
         className={clsx(
           'border-t border-navy-100 bg-white lg:hidden dark:border-navy-800 dark:bg-navy-950',
           open ? 'block' : 'hidden',

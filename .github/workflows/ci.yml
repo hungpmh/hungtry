@@ -61,8 +61,12 @@ jobs:
         working-directory: frontend
 
   hqt-website:
-    name: HQT Website Build
+    name: HQT Website Build & Tests
     runs-on: ubuntu-latest
+    env:
+      # Exercise the same base path the site is deployed under on GitHub Pages,
+      # for both the build and the Playwright run that serves it.
+      VITE_BASE_PATH: /${{ github.event.repository.name }}/
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -73,10 +77,20 @@ jobs:
       - run: npm ci
         working-directory: hqt-website
       - name: Build (GitHub Pages base path)
-        env:
-          VITE_BASE_PATH: /${{ github.event.repository.name }}/
         run: npm run build
         working-directory: hqt-website
-      - name: Run smoke tests
-        run: npm test --if-present
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
         working-directory: hqt-website
+      - name: Run smoke and accessibility tests
+        env:
+          PW_SKIP_BUILD: "1"
+        run: npm test
+        working-directory: hqt-website
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: hqt-website/playwright-report/
+          retention-days: 7

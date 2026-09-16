@@ -37,7 +37,7 @@ export function LanguageToggle({ className, inverted = false }: LanguageTogglePr
             aria-label={opt.ariaLabel}
             onClick={() => setLang(opt.code)}
             className={clsx(
-              'rounded-full px-2.5 py-1 leading-none transition-colors',
+              'rounded-full px-3 py-2 leading-none transition-colors',
               i === 0 && 'mr-0.5',
               active
                 ? inverted

@@ -8,12 +8,13 @@ export function Process() {
   const t = useT()
   return (
     <Section id="process" eyebrow={t.process.eyebrow} title={t.process.title} tone="tint">
-      <ol className="relative mt-12 grid gap-8 lg:grid-cols-5 lg:gap-6">
-        {/* Connector line (desktop) */}
+      <div className="relative mt-12">
+        {/* Connector line (desktop) - kept outside the <ol> so the list only contains <li> children */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-[10%] right-[10%] top-6 hidden h-0.5 bg-gradient-to-r from-ice-300 via-ice-500 to-ice-300 lg:block dark:from-ice-800 dark:via-ice-500 dark:to-ice-800"
         />
+      <ol className="relative grid gap-8 lg:grid-cols-5 lg:gap-6">
         {t.process.steps.map((step, i) => {
           const Icon = STEP_ICONS[i] ?? ClipboardList
           const isLast = i === t.process.steps.length - 1
@@ -30,7 +31,7 @@ export function Process() {
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </span>
               <div className="pt-1 lg:pt-3">
-                <p className="text-xs font-semibold uppercase tracking-wider text-ice-600 dark:text-ice-300">
+                <p className="text-xs font-semibold uppercase tracking-wider text-ice-700 dark:text-ice-300">
                   {String(i + 1).padStart(2, '0')}
                 </p>
                 <h3 className="mt-1 font-semibold text-navy-900 dark:text-white">{step.title}</h3>
@@ -40,6 +41,7 @@ export function Process() {
           )
         })}
       </ol>
+      </div>
     </Section>
   )
 }

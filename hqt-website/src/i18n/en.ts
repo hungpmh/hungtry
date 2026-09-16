@@ -6,7 +6,7 @@ const en = {
   meta: {
     title: 'HQT Group | Import · Export · Cold-Chain Logistics',
     description:
-      'HQT Group imports frozen seafood, meat and poultry from India, Russia and other partner markets, exports Vietnamese goods, and delivers temperature-controlled cold-chain logistics for distributors across Vietnam.',
+      'HQT Group imports frozen seafood, meat and poultry from India, Russia and partner markets, exports Vietnamese goods and runs cold-chain logistics across Vietnam.',
   },
   common: {
     tagline: 'Import · Export · Cold-Chain Logistics',
@@ -14,10 +14,8 @@ const en = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     language: 'Language',
-    switchToVi: 'Chuyển sang tiếng Việt',
-    switchToEn: 'Switch to English',
-    learnMore: 'Learn more',
-    placeholderNotice: 'Placeholder details - to be confirmed',
+    navPrimary: 'Primary',
+    navFooter: 'Footer',
   },
   nav: {
     about: 'About',
@@ -37,6 +35,11 @@ const en = {
     ctaPrimary: 'Contact us',
     ctaSecondary: 'Our services',
     visualLabel: 'Illustration of a temperature-controlled supply chain from origin to destination',
+    illustration: {
+      frozen: 'FROZEN',
+      inTransit: 'IN TRANSIT',
+      hub: 'HQT HUB',
+    },
     stats: [
       { label: 'Multi-origin sourcing', detail: 'India, Russia and other partner markets' },
       { label: 'Temperature-controlled end-to-end', detail: 'From origin cold store to your dock' },
@@ -152,6 +155,7 @@ const en = {
     ],
     diagramLabel: 'Diagram showing goods flowing from sourcing origins through HQT Group cold storage to destinations',
     hub: 'HQT Group cold-chain hub',
+    hubNote: '-18 °C · temperature-controlled',
   },
   whyUs: {
     eyebrow: 'Why HQT',
@@ -239,7 +243,7 @@ const en = {
       messagePlaceholder: 'Product, specification, volume, destination and timeline...',
       required: 'Required',
       submit: 'Open in my email app',
-      note: 'Submitting opens your email application with the enquiry pre-filled - nothing is sent until you press send. Prefer another channel? Email or message us directly using the details on the left.',
+      note: 'Submitting opens your email application with the enquiry pre-filled - nothing is sent until you press send. Prefer another channel? Email or message us directly using the contact details in this section.',
       success: 'Your email application should now be open with the enquiry pre-filled. If nothing happened, please email us directly at',
       errors: {
         name: 'Please enter your name.',

@@ -3,7 +3,24 @@
  * Fully self-contained (no external assets). Animations are disabled by the
  * global prefers-reduced-motion rule in index.css.
  */
-export function ColdChainIllustration({ title }: { title: string }) {
+interface IllustrationLabels {
+  frozen: string
+  inTransit: string
+  hub: string
+}
+
+interface ColdChainIllustrationProps {
+  /** Accessible name for the whole graphic. */
+  title: string
+  /** Localised caption text drawn inside the graphic. */
+  labels: IllustrationLabels
+}
+
+/** Approximate rendered width (SVG units) of an uppercase 11px label with 1px letter spacing. */
+const chipWidth = (text: string) => Math.max(124, 46 + text.length * 8.4)
+
+export function ColdChainIllustration({ title, labels }: ColdChainIllustrationProps) {
+  const statusWidth = chipWidth(labels.inTransit)
   return (
     <svg
       viewBox="0 0 560 400"
@@ -38,7 +55,7 @@ export function ColdChainIllustration({ title }: { title: string }) {
         <circle cx="26" cy="27" r="10" fill="none" stroke="#8ccdee" strokeWidth="2.5" />
         <path d="M26 20v7l5 3" fill="none" stroke="#8ccdee" strokeWidth="2.5" strokeLinecap="round" />
         <text x="48" y="24" fill="#c0e3f6" fontSize="11" fontFamily="ui-sans-serif, system-ui, sans-serif" letterSpacing="1">
-          FROZEN
+          {labels.frozen}
         </text>
         <text x="48" y="43" fill="#ffffff" fontSize="17" fontWeight="700" fontFamily="ui-sans-serif, system-ui, sans-serif">
           -18 °C
@@ -46,13 +63,13 @@ export function ColdChainIllustration({ title }: { title: string }) {
       </g>
 
       {/* Status chip */}
-      <g transform="translate(400 36)">
-        <rect width="124" height="30" rx="15" fill="rgba(239,159,26,0.16)" stroke="rgba(239,159,26,0.5)" />
+      <g transform={`translate(${524 - statusWidth} 36)`}>
+        <rect width={statusWidth} height="30" rx="15" fill="rgba(239,159,26,0.16)" stroke="rgba(239,159,26,0.5)" />
         <circle cx="18" cy="15" r="4" fill="#f6b445">
           <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" repeatCount="indefinite" />
         </circle>
         <text x="32" y="19.5" fill="#f6b445" fontSize="11" fontWeight="600" fontFamily="ui-sans-serif, system-ui, sans-serif" letterSpacing="1">
-          IN TRANSIT
+          {labels.inTransit}
         </text>
       </g>
 
@@ -96,7 +113,7 @@ export function ColdChainIllustration({ title }: { title: string }) {
         <rect x="-8" y="-14" width="16" height="42" rx="2" fill="#0b1f3a" />
         <rect x="16" y="-14" width="16" height="42" rx="2" fill="#0b1f3a" />
         <text x="0" y="46" textAnchor="middle" fill="#c0e3f6" fontSize="11" fontWeight="600" fontFamily="ui-sans-serif, system-ui, sans-serif" letterSpacing="1.5">
-          HQT HUB
+          {labels.hub}
         </text>
       </g>
 

@@ -36,6 +36,7 @@ export function Contact() {
   const [form, setForm] = useState<FormState>(INITIAL)
   const [errors, setErrors] = useState<FieldErrors>({})
   const [submitted, setSubmitted] = useState(false)
+  const [mailtoHref, setMailtoHref] = useState<string>(`mailto:${company.contact.email}`)
 
   const id = (name: keyof FormState) => `${uid}-${name}`
 
@@ -79,7 +80,9 @@ export function Contact() {
       if (first) document.getElementById(id(first))?.focus()
       return
     }
-    window.location.href = buildMailto()
+    const href = buildMailto()
+    setMailtoHref(href)
+    window.location.href = href
     setSubmitted(true)
   }
 
@@ -90,45 +93,45 @@ export function Contact() {
         <div className="card h-fit bg-navy-900 text-white dark:bg-navy-800">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-ice-300">{t.contact.detailsTitle}</h3>
           <dl className="mt-5 space-y-5">
-            <div className="flex gap-3">
-              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
-              <div>
-                <dt className="text-xs uppercase tracking-wider text-navy-300">{t.contact.email}</dt>
-                <dd className="mt-0.5 break-all">
-                  <a href={`mailto:${contact.email}`} className="rounded font-medium hover:text-ice-200">
-                    {contact.email}
-                  </a>
-                </dd>
-              </div>
+            <div>
+              <dt className="flex items-center gap-3 text-xs uppercase tracking-wider text-navy-300">
+                <Mail className="h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
+                {t.contact.email}
+              </dt>
+              <dd className="mt-0.5 break-all pl-8">
+                <a href={`mailto:${contact.email}`} className="inline-block rounded py-1 font-medium hover:text-ice-200">
+                  {contact.email}
+                </a>
+              </dd>
             </div>
-            <div className="flex gap-3">
-              <Phone className="mt-0.5 h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
-              <div>
-                <dt className="text-xs uppercase tracking-wider text-navy-300">{t.contact.phone}</dt>
-                <dd className="mt-0.5">
-                  <a href={`tel:${contact.phoneE164}`} className="rounded font-medium hover:text-ice-200">
-                    {contact.phoneDisplay}
-                  </a>
-                </dd>
-              </div>
+            <div>
+              <dt className="flex items-center gap-3 text-xs uppercase tracking-wider text-navy-300">
+                <Phone className="h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
+                {t.contact.phone}
+              </dt>
+              <dd className="mt-0.5 pl-8">
+                <a href={`tel:${contact.phoneE164}`} className="inline-block rounded py-1 font-medium hover:text-ice-200">
+                  {contact.phoneDisplay}
+                </a>
+              </dd>
             </div>
-            <div className="flex gap-3">
-              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
-              <div>
-                <dt className="text-xs uppercase tracking-wider text-navy-300">{t.contact.address}</dt>
-                <dd className="mt-0.5 font-medium">
-                  {contact.address.street}
-                  <br />
-                  {contact.address.city}, {contact.address.country}
-                </dd>
-              </div>
+            <div>
+              <dt className="flex items-center gap-3 text-xs uppercase tracking-wider text-navy-300">
+                <MapPin className="h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
+                {t.contact.address}
+              </dt>
+              <dd className="mt-0.5 pl-8 font-medium">
+                {contact.address.street}
+                <br />
+                {contact.address.city}, {contact.address.country}
+              </dd>
             </div>
-            <div className="flex gap-3">
-              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
-              <div>
-                <dt className="text-xs uppercase tracking-wider text-navy-300">{t.contact.hours}</dt>
-                <dd className="mt-0.5 font-medium">{contact.hours[lang]}</dd>
-              </div>
+            <div>
+              <dt className="flex items-center gap-3 text-xs uppercase tracking-wider text-navy-300">
+                <Clock className="h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
+                {t.contact.hours}
+              </dt>
+              <dd className="mt-0.5 pl-8 font-medium">{contact.hours[lang]}</dd>
             </div>
           </dl>
 
@@ -275,7 +278,11 @@ export function Contact() {
             {submitted && (
               <p className="mt-5 rounded-lg border border-ice-300 bg-ice-50 p-4 text-sm text-navy-800 dark:border-ice-700 dark:bg-navy-950 dark:text-navy-100">
                 {f.success}{' '}
-                <a href={`mailto:${contact.email}`} className="rounded font-semibold text-ice-700 underline dark:text-ice-300">
+                <a
+                  href={mailtoHref}
+                  data-testid="mailto-fallback"
+                  className="rounded font-semibold text-ice-700 underline dark:text-ice-300"
+                >
                   {contact.email}
                 </a>
                 .

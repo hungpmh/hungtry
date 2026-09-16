@@ -50,7 +50,7 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-          <ColdChainIllustration title={t.hero.visualLabel} />
+          <ColdChainIllustration title={t.hero.visualLabel} labels={t.hero.illustration} />
         </div>
       </div>
 

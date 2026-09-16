@@ -21,7 +21,7 @@ export default function App() {
         {t.common.skipToContent}
       </a>
       <Header />
-      <main id="main">
+      <main id="main" tabIndex={-1} className="outline-none focus-visible:ring-0">
         <Hero />
         <About />
         <Services />

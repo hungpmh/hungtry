@@ -42,7 +42,7 @@ export function Markets() {
             <Warehouse className="h-7 w-7 text-ice-300" aria-hidden="true" />
           </span>
           <p className="relative mt-4 text-sm font-semibold leading-snug">{t.markets.hub}</p>
-          <p className="relative mt-1 text-xs text-navy-200">-18 °C · HACCP</p>
+          <p className="relative mt-1 text-xs text-navy-200">{t.markets.hubNote}</p>
         </div>
 
         <FlowArrow />

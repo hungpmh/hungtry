@@ -21,14 +21,14 @@ export function Footer() {
           </div>
         </div>
 
-        <nav aria-label="Footer">
+        <nav aria-label={t.common.navFooter}>
           <h2 className="text-sm font-semibold uppercase tracking-wider text-white">{t.footer.navTitle}</h2>
           <ul className="mt-4 space-y-2.5">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className="rounded text-sm text-navy-200 transition-colors hover:text-white"
+                  className="inline-block rounded py-1 text-sm text-navy-200 transition-colors hover:text-white"
                 >
                   {t.nav[item.labelKey]}
                 </a>
@@ -39,22 +39,22 @@ export function Footer() {
 
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wider text-white">{t.footer.contactTitle}</h2>
-          <ul className="mt-4 space-y-3 text-sm">
+          <ul className="mt-4 space-y-2 text-sm">
             <li className="flex items-start gap-2.5">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-ice-300" aria-hidden="true" />
-              <a href={`mailto:${contact.email}`} className="rounded break-all text-navy-200 hover:text-white">
+              <Mail className="mt-1.5 h-4 w-4 shrink-0 text-ice-300" aria-hidden="true" />
+              <a href={`mailto:${contact.email}`} className="inline-block break-all rounded py-1 text-navy-200 hover:text-white">
                 {contact.email}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
-              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-ice-300" aria-hidden="true" />
-              <a href={`tel:${contact.phoneE164}`} className="rounded text-navy-200 hover:text-white">
+              <Phone className="mt-1.5 h-4 w-4 shrink-0 text-ice-300" aria-hidden="true" />
+              <a href={`tel:${contact.phoneE164}`} className="inline-block rounded py-1 text-navy-200 hover:text-white">
                 {contact.phoneDisplay}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ice-300" aria-hidden="true" />
-              <span className="text-navy-200">
+              <MapPin className="mt-1.5 h-4 w-4 shrink-0 text-ice-300" aria-hidden="true" />
+              <span className="inline-block py-1 text-navy-200">
                 {contact.address.city}, {contact.address.country}
               </span>
             </li>
@@ -67,7 +67,7 @@ export function Footer() {
           <p>
             © {year} {company.name}. {t.footer.rights}
           </p>
-          <a href="#top" className="inline-flex items-center gap-1.5 rounded hover:text-white">
+          <a href="#top" className="inline-flex items-center gap-1.5 rounded py-1.5 hover:text-white">
             <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
             {t.footer.backToTop}
           </a>
