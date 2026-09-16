@@ -2,6 +2,14 @@
 
 A full-stack supply chain analytics and forecasting platform built on the [DataCo Smart Supply Chain dataset](https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis).
 
+## HQT Group Website
+
+The `hqt-website/` directory contains a separate, bilingual (EN/VI) static
+marketing site for **HQT Group — Import · Export · Cold-Chain Logistics**.
+It is built with Vite + React + Tailwind and published to GitHub Pages by
+`.github/workflows/deploy-pages.yml` (Pages must be enabled once under
+*Settings → Pages → Source: GitHub Actions*). See `hqt-website/README.md`.
+
 ## Business Problem
 
 Supply chain managers lack a single view to answer:
