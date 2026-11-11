@@ -16,6 +16,8 @@ const en = {
     language: 'Language',
     navPrimary: 'Primary',
     navFooter: 'Footer',
+    opensInNewTab: 'opens in a new tab',
+    noscript: 'This website needs JavaScript to display in full. You can still reach us directly:',
   },
   nav: {
     about: 'About',
@@ -222,6 +224,7 @@ const en = {
     email: 'Email',
     phone: 'Phone',
     address: 'Address',
+    viewMap: 'View on map',
     hours: 'Business hours',
     messaging: 'Message us',
     whatsapp: 'WhatsApp',

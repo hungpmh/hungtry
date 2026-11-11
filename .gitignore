@@ -15,6 +15,7 @@ frontend/.env.local
 frontend/*.tsbuildinfo
 hqt-website/node_modules/
 hqt-website/dist/
+hqt-website/dist-standalone/
 hqt-website/.env.local
 hqt-website/*.tsbuildinfo
 hqt-website/test-results/

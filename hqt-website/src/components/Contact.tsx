@@ -1,7 +1,7 @@
-import { Clock, Info, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react'
+import { ArrowUpRight, Clock, Info, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react'
 import { useId, useState, type FormEvent } from 'react'
 import { useLanguage } from '../i18n'
-import { company } from '../content/company'
+import { addressLines, company, mapLink } from '../content/company'
 import { Section } from './Section'
 
 type Interest = 'import' | 'export' | 'logistics' | 'other'
@@ -32,6 +32,9 @@ export function Contact() {
   const { t, lang } = useLanguage()
   const f = t.contact.form
   const { contact, social } = company
+  const [addressLine1, addressLine2] = addressLines(lang)
+  // Announced to screen readers on links that leave the site.
+  const newTabHint = <span className="sr-only"> ({t.common.opensInNewTab})</span>
   const uid = useId()
   const [form, setForm] = useState<FormState>(INITIAL)
   const [errors, setErrors] = useState<FieldErrors>({})
@@ -120,10 +123,22 @@ export function Contact() {
                 <MapPin className="h-5 w-5 shrink-0 text-ice-300" aria-hidden="true" />
                 {t.contact.address}
               </dt>
-              <dd className="mt-0.5 pl-8 font-medium">
-                {contact.address.street}
-                <br />
-                {contact.address.city}, {contact.address.country}
+              <dd className="mt-0.5 pl-8">
+                <address className="py-1 font-medium not-italic">
+                  {addressLine1}
+                  <br />
+                  {addressLine2}
+                </address>
+                <a
+                  href={mapLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 rounded py-1.5 text-sm font-medium text-ice-300 underline-offset-4 hover:text-ice-200 hover:underline"
+                >
+                  {t.contact.viewMap}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  {newTabHint}
+                </a>
               </dd>
             </div>
             <div>
@@ -147,9 +162,11 @@ export function Contact() {
                     href={social.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-ghost-light !px-4 !py-2 text-xs"
+                    className="btn-ghost-light !gap-1.5 !px-4 !py-2 text-xs"
                   >
                     {t.contact.whatsapp}
+                    <ArrowUpRight className="h-3.5 w-3.5 text-ice-200" aria-hidden="true" />
+                    {newTabHint}
                   </a>
                 )}
                 {social.zalo && (
@@ -157,9 +174,11 @@ export function Contact() {
                     href={social.zalo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-ghost-light !px-4 !py-2 text-xs"
+                    className="btn-ghost-light !gap-1.5 !px-4 !py-2 text-xs"
                   >
                     {t.contact.zalo}
+                    <ArrowUpRight className="h-3.5 w-3.5 text-ice-200" aria-hidden="true" />
+                    {newTabHint}
                   </a>
                 )}
               </div>

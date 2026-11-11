@@ -30,7 +30,8 @@ test.describe('language toggle', () => {
     )
     // No untranslated English strings leak into the Vietnamese page.
     const bodyText = await page.locator('body').innerText()
-    for (const leak of ['Skip to main content', 'Open menu', 'Get a quote', 'All rights reserved', 'IN TRANSIT']) {
+    const leaks = ['Skip to main content', 'Open menu', 'Get a quote', 'All rights reserved', 'IN TRANSIT', 'View on map']
+    for (const leak of leaks) {
       expect(bodyText, `"${leak}" should be translated`).not.toContain(leak)
     }
 

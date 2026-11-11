@@ -1,14 +1,15 @@
 import { ArrowUp, Mail, MapPin, Phone } from 'lucide-react'
 import { useLanguage } from '../i18n'
-import { company } from '../content/company'
+import { addressLines, company, mapLink } from '../content/company'
 import { NAV_ITEMS } from '../content/nav'
 import { LanguageToggle } from './LanguageToggle'
 import { Logo } from './Logo'
 
 export function Footer() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const year = new Date().getFullYear()
   const { contact } = company
+  const [addressLine1, addressLine2] = addressLines(lang)
 
   return (
     <footer className="bg-navy-950 text-navy-100">
@@ -54,9 +55,17 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-2.5">
               <MapPin className="mt-1.5 h-4 w-4 shrink-0 text-ice-300" aria-hidden="true" />
-              <span className="inline-block py-1 text-navy-200">
-                {contact.address.city}, {contact.address.country}
-              </span>
+              <a
+                href={mapLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded py-1 text-navy-200 hover:text-white"
+              >
+                {addressLine1}
+                <br />
+                {addressLine2}
+                <span className="sr-only"> ({t.common.opensInNewTab})</span>
+              </a>
             </li>
           </ul>
         </div>

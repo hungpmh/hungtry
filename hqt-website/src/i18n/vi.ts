@@ -17,6 +17,8 @@ const vi: Dictionary = {
     language: 'Ngôn ngữ',
     navPrimary: 'Điều hướng chính',
     navFooter: 'Chân trang',
+    opensInNewTab: 'mở trong thẻ mới',
+    noscript: 'Trang web cần bật JavaScript để hiển thị đầy đủ. Bạn vẫn có thể liên hệ trực tiếp với chúng tôi:',
   },
   nav: {
     about: 'Giới thiệu',
@@ -223,6 +225,7 @@ const vi: Dictionary = {
     email: 'Email',
     phone: 'Điện thoại',
     address: 'Địa chỉ',
+    viewMap: 'Xem trên bản đồ',
     hours: 'Giờ làm việc',
     messaging: 'Nhắn tin cho chúng tôi',
     whatsapp: 'WhatsApp',
