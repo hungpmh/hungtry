@@ -37,6 +37,8 @@ jobs:
         env:
           # Project site is served from https://<owner>.github.io/<repo>/
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          # Canonical / Open Graph URLs for this deployment (no trailing slash, no sub-path)
+          VITE_SITE_ORIGIN: https://${{ github.repository_owner }}.github.io
         run: npm run build
         working-directory: hqt-website
 

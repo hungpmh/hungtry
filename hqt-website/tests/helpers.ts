@@ -1,9 +1,13 @@
 import { expect, type Page } from '@playwright/test'
+import { company } from '../src/content/company'
 import en from '../src/i18n/en'
 import vi from '../src/i18n/vi'
 
 export const dictionaries = { en, vi }
 export type Lang = keyof typeof dictionaries
+
+/** Public origin the hosted build under test was given (see playwright.config.ts), or '' when it has none. */
+export const siteOrigin = (process.env.VITE_SITE_ORIGIN || company.siteOrigin).replace(/\/+$/, '')
 
 /** Collects console errors / uncaught exceptions for later assertion. */
 export function trackErrors(page: Page): string[] {

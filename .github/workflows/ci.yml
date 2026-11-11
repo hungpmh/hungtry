@@ -64,9 +64,10 @@ jobs:
     name: HQT Website Build & Tests
     runs-on: ubuntu-latest
     env:
-      # Exercise the same base path the site is deployed under on GitHub Pages,
-      # for both the build and the Playwright run that serves it.
+      # Exercise the same base path and origin the site is deployed under on
+      # GitHub Pages, for both the build and the Playwright run that serves it.
       VITE_BASE_PATH: /${{ github.event.repository.name }}/
+      VITE_SITE_ORIGIN: https://${{ github.repository_owner }}.github.io
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -79,6 +80,9 @@ jobs:
       - name: Build (GitHub Pages base path)
         run: npm run build
         working-directory: hqt-website
+      - name: Build standalone single-file site
+        run: npm run build:standalone
+        working-directory: hqt-website
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
         working-directory: hqt-website
@@ -87,6 +91,13 @@ jobs:
           PW_SKIP_BUILD: "1"
         run: npm test
         working-directory: hqt-website
+      # The tested single-file site, ready to hand to a third party to host.
+      - name: Upload standalone site
+        uses: actions/upload-artifact@v4
+        with:
+          name: hqt-group-website-standalone
+          path: hqt-website/dist-standalone/index.html
+          if-no-files-found: error
       - name: Upload Playwright report on failure
         if: failure()
         uses: actions/upload-artifact@v4

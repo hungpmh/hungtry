@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { dictionaries, openSite, switchLanguage, trackErrors } from './helpers'
+import { dictionaries, openSite, siteOrigin, switchLanguage, trackErrors } from './helpers'
 
 test.describe('page load', () => {
   test('renders without console errors, failed requests or 404s', async ({ page }) => {
@@ -37,8 +37,33 @@ test.describe('page load', () => {
     const data = JSON.parse(raw ?? '')
     expect(data['@type']).toBe('Organization')
     expect(data.name).toBe('HQT Group')
-    expect(typeof data.url).toBe('string')
-    expect(data.url.endsWith('/')).toBe(true)
+  })
+
+  test('canonical and share tags follow the configured site origin', async ({ page, baseURL }) => {
+    await openSite(page)
+    const siteUrl = siteOrigin ? `${siteOrigin}${new URL(baseURL!).pathname}` : ''
+    const jsonLd = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '')
+    const canonical = page.locator('link[rel="canonical"]')
+    const ogUrl = page.locator('meta[property="og:url"]')
+    const ogImage = page.locator('meta[property="og:image"]')
+    const twitterCard = page.locator('meta[name="twitter:card"]')
+
+    if (siteUrl) {
+      await expect(canonical).toHaveAttribute('href', siteUrl)
+      await expect(ogUrl).toHaveAttribute('content', siteUrl)
+      await expect(ogImage).toHaveAttribute('content', `${siteUrl}og-image.png`)
+      await expect(twitterCard).toHaveAttribute('content', 'summary_large_image')
+      expect(jsonLd.url).toBe(siteUrl)
+      // The image those tags point at is really published next to the page.
+      expect((await page.request.get(`${baseURL}og-image.png`)).ok()).toBe(true)
+    } else {
+      // Public address unknown: nothing may point at a guessed domain.
+      await expect(canonical).toHaveCount(0)
+      await expect(ogUrl).toHaveCount(0)
+      await expect(ogImage).toHaveCount(0)
+      await expect(twitterCard).toHaveAttribute('content', 'summary')
+      expect(jsonLd.url).toBeUndefined()
+    }
   })
 
   test('asset URLs honour the configured base path', async ({ page, baseURL }) => {

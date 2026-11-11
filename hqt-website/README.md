@@ -12,12 +12,14 @@ npm install
 npm run dev        # http://localhost:5173
 ```
 
-| Script              | What it does                                                    |
-| ------------------- | --------------------------------------------------------------- |
-| `npm run dev`       | Start the Vite dev server with hot reload                        |
-| `npm run build`     | Type-check (`tsc -b`) and build the production bundle to `dist/` |
-| `npm run preview`   | Serve the production build locally                               |
-| `npm run typecheck` | Type-check only, no emit                                         |
+| Script                     | What it does                                                             |
+| -------------------------- | ------------------------------------------------------------------------ |
+| `npm run dev`              | Start the Vite dev server with hot reload                                 |
+| `npm run build`            | Type-check (`tsc -b`) and build the hosted site to `dist/`                |
+| `npm run build:standalone` | Build the whole site as one file, `dist-standalone/index.html` (see below) |
+| `npm run preview`          | Serve the production build locally                                        |
+| `npm run typecheck`        | Type-check only, no emit                                                  |
+| `npm test`                 | Build both outputs and run the Playwright smoke / accessibility suite     |
 
 Node 20+ is recommended (CI uses Node 22).
 
@@ -31,16 +33,38 @@ VITE_BASE_PATH=/<repo>/ npm run build
 ```
 
 All asset links (favicon, JS/CSS, Open Graph image, JSON-LD URLs) respect this base path.
-The public origin used for canonical / Open Graph URLs comes from `siteOrigin` in
-`src/content/company.ts` and can be overridden per build with `VITE_SITE_ORIGIN`:
+
+The canonical / Open Graph URL tags need the public origin of the site. It comes from
+`siteOrigin` in `src/content/company.ts`, or per build from `VITE_SITE_ORIGIN`:
 
 ```bash
 VITE_SITE_ORIGIN=https://<owner>.github.io VITE_BASE_PATH=/<repo>/ npm run build
 ```
 
-The repository's `.github/workflows/deploy-pages.yml` handles this automatically.
+When neither is set those tags are left out, so a build never points at a domain it is not
+served from. The repository's `.github/workflows/deploy-pages.yml` passes both values
+automatically.
 
-## Replacing placeholder company details (do this first)
+## Single-file build for third-party hosting
+
+```bash
+npm run build:standalone      # -> dist-standalone/index.html
+```
+
+This produces the complete site as **one HTML file** with the script, styles and icon inside
+it. It needs no other files, makes no network requests, and works from any host, any folder
+or straight from disk, so it is the copy to hand to a partner who will host the site:
+upload it as `index.html` and it is live.
+
+- The file is plain ASCII, so Vietnamese text displays correctly even if the host declares
+  the wrong character set.
+- It carries no canonical / share-image tags, because its final address is not known. Once
+  the official domain is set as `siteOrigin` in `company.ts`, the canonical URL is included.
+- With scripts disabled it still shows the company name and contact details.
+- Rebuild and resend it whenever the content changes. CI also attaches the tested file to
+  every run as the `hqt-group-website-standalone` artifact.
+
+## Company and contact details
 
 **All company, contact and social values live in one file:**
 
@@ -48,25 +72,35 @@ The repository's `.github/workflows/deploy-pages.yml` handles this automatically
 src/content/company.ts
 ```
 
-Every value marked `// PLACEHOLDER` is fictional and must be replaced before going live:
+| Field                           | Value / meaning                                                              |
+| ------------------------------- | ---------------------------------------------------------------------------- |
+| `contact.email`                 | Enquiry mailbox, also the target of the contact form's `mailto:`             |
+| `contact.phoneDisplay`          | Phone number as displayed                                                    |
+| `contact.phoneE164`             | The same number in E.164 form (for `tel:` links / JSON-LD)                   |
+| `contact.address.en` / `.vi`    | Office address in each language (the Vietnamese form feeds JSON-LD and the map link) |
+| `contact.address.postalCode`    | Postcode, shown after the city                                               |
+| `contact.mapUrl`                | Optional exact Google Maps link; empty = a search link built from the address |
+| `contact.hours.en` / `.vi`      | Business hours as displayed                                                  |
+| `contact.hours.days` / `.opens` / `.closes` | The same hours in structured form for JSON-LD                    |
+| `social.whatsapp`               | `https://wa.me/<country code + number, digits only>` or `''` to hide         |
+| `social.zalo`                   | `https://zalo.me/<number or OA id>` or `''` to hide                          |
+| `social.linkedin`, `social.facebook` | Full profile URLs, listed in JSON-LD `sameAs` when set                  |
 
-| Field                       | Currently                              | Replace with                                        |
-| --------------------------- | -------------------------------------- | --------------------------------------------------- |
-| `legalName`                 | `HQT Group Import Export Co., Ltd.`    | Registered company name                             |
-| `siteOrigin`                | `https://hqtgroup.example`             | Real domain, no trailing slash, no sub-path         |
-| `contact.email`             | `contact@hqtgroup.example`             | Real sales / enquiry mailbox (used by the contact form's `mailto:`) |
-| `contact.phoneDisplay`      | `+84 (0) 000 000 000`                  | Phone number as it should be displayed              |
-| `contact.phoneE164`         | `+84000000000`                         | Same number in E.164 form (for `tel:` links / SEO)  |
-| `contact.address.street`    | `Address to be confirmed`              | Street address                                      |
-| `contact.address.city`      | `Ho Chi Minh City`                     | Confirm                                             |
-| `contact.hours.en` / `.vi`  | Mon–Fri 08:00–17:30                    | Confirm business hours                              |
-| `social.whatsapp`           | `https://wa.me/84000000000`            | `https://wa.me/<country code + number, digits only>` or `''` to hide |
-| `social.zalo`               | `https://zalo.me/0000000000`           | `https://zalo.me/<number or OA id>` or `''` to hide |
-| `social.linkedin`, `social.facebook` | `''` (hidden)                 | Full profile URLs to include them in JSON-LD `sameAs` |
+Two values are **still to be supplied** and are empty on purpose. An empty value is left out
+of the page rather than filled with a guess:
+
+| Field        | Add when known                                                                      |
+| ------------ | ----------------------------------------------------------------------------------- |
+| `legalName`  | Registered company name (JSON-LD only)                                              |
+| `siteOrigin` | Official domain, e.g. `https://www.example.com` - no trailing slash, no sub-path     |
+
+When the phone number changes, update `phoneDisplay`, `phoneE164` and the WhatsApp / Zalo
+links together; the test suite fails if the displayed and dialled numbers disagree.
 
 Changing `company.ts` updates the header/footer, the Contact section, the `mailto:` form, the
-canonical / Open Graph tags and the JSON-LD `Organization` schema injected into `index.html` at
-build time (see `vite.config.ts`). No other file needs editing for contact changes.
+no-script fallback, the canonical / Open Graph tags and the JSON-LD `Organization` schema
+injected into `index.html` at build time (see `vite.config.ts`). No other file needs editing
+for contact changes.
 
 Also consider replacing:
 
@@ -88,14 +122,15 @@ description. Users switch with the `EN | VI` toggle in the header and footer.
 
 The form has no backend. On submit it validates the required fields and opens the visitor's
 email client via a `mailto:` link to `company.contact.email` with subject and body pre-filled.
-WhatsApp / Zalo buttons link to `company.social.*`.
+WhatsApp / Zalo buttons link to `company.social.*`, and the address links to Google Maps.
 
 ## Project structure
 
 ```
 hqt-website/
-├── index.html                 # SEO meta, OG/Twitter tags, JSON-LD placeholder
+├── index.html                 # SEO meta, OG/Twitter tags, build-time placeholders
 ├── public/                    # favicon.svg, og-image.png, robots.txt
+├── tests/                     # Playwright smoke, accessibility and standalone-file tests
 ├── src/
 │   ├── main.tsx               # Entry: LanguageProvider + App
 │   ├── App.tsx                # Page composition (skip link, header, sections, footer)
@@ -107,7 +142,7 @@ hqt-website/
 │   ├── hooks/useActiveSection.ts
 │   └── components/            # Header, Hero, About, Services, Products, Markets,
 │                              # WhyUs, Process, Contact, Footer, Logo, Section, ...
-├── vite.config.ts             # base path + build-time SEO injection plugin
+├── vite.config.ts             # base path, build-time SEO injection, standalone single-file build
 └── tailwind.config.js         # navy / ice / accent palette, dark mode via media query
 ```
 

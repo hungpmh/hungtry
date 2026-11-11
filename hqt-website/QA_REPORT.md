@@ -122,3 +122,20 @@ the deployment, and uploads the Playwright report if anything fails.
 5. **Add analytics only with consent.** Nothing tracks visitors today, which
    keeps the site free of cookie-consent obligations. Adding analytics later
    will change that.
+
+---
+
+## Update: contact details and single-file build
+
+Changes made after the report above was written:
+
+- **Recommendation 1 is addressed for the contact details.** The email address, phone
+  number, office address, business hours and WhatsApp / Zalo links in
+  `src/content/company.ts` are now real. The registered legal name and the public domain
+  are still to be supplied; they are left empty, and an empty value is omitted from the
+  page rather than published as a guess.
+- **Standalone build.** `npm run build:standalone` produces the whole site as one HTML file
+  for third-party hosting. It is tested from disk with the network off, under a wrong
+  server charset and with scripts disabled.
+- **Test suite.** Now 36 tests in seven spec files, adding the contact-detail and
+  standalone-file checks.
